@@ -134,7 +134,7 @@
 }
 
 - (void)removeFromKeychain {
-	// todo
+	SecKeychainItemDelete(keychainItem);
 }
 
 - (OSStatus)setKeychainAttribute:(SecItemAttr)attribute newValue:(NSString *)val newPassword:(NSString *)password {
@@ -150,6 +150,36 @@
 	if (status != noErr) 
 		NSLog(@"SecKeychainItemModifyAttributesAndData returned %d", status);
 	return status;
+}
+
+- (OSStatus)setServer:(NSString *)protocolAndServer {
+	NSURL *url = [NSURL URLWithString:protocolAndServer];
+	NSString *host = [url host];
+	SecProtocolType protocol = [url SecProtocolType];
+	
+	// Set up attribute vector (each attribute consists of {tag, length, pointer}):
+	SecKeychainAttribute attrs[] = { {kSecServerItemAttr, [host length], (void *)[host UTF8String] }, 
+							  	     {kSecProtocolItemAttr, sizeof(SecProtocolType), &protocol } };
+								
+	const SecKeychainAttributeList attributes = { sizeof(attrs) / sizeof(attrs[0]),  attrs };
+	OSStatus status = SecKeychainItemModifyAttributesAndData (
+							keychainItem,   // the item reference
+							&attributes,    // no change to attributes
+							0,
+							nil );
+	if (status == noErr) {
+		[server release];
+		server = [protocolAndServer copy];
+	}
+	return status;
+}
+
+- (OSStatus)setUsername:(NSString *)newUsername {
+	return [self update:newUsername password:nil];
+}
+
+- (OSStatus)setPassword:(NSString *)newPassword {
+	return [self update:username password:newPassword];
 }
 
 - (OSStatus)update:(NSString *)newUsername password:(NSString *)newPassword {

@@ -4,6 +4,8 @@
 #import "zkDescribeSObject.h"
 #import "zkSoapException.h"
 #import "NewPasswordController.h"
+#import "Browser.h"
+#import "BrowserSetting.h"
 
 NSString *prodUrl = @"https://www.salesforce.com";
 NSString *testUrl = @"https://test.salesforce.com";
@@ -43,6 +45,11 @@ OSStatus keychainCallback (SecKeychainEvent keychainEvent, SecKeychainCallbackIn
 	OSStatus s = SecKeychainAddCallback(keychainCallback, kSecAddEventMask | kSecDeleteEventMask | kSecUpdateEventMask, self);
 	if (s != noErr)
 		NSLog(@"Trapdoor - unable to register for keychain changes, got error %d", s);
+	
+	// this is needed because if you add TD to the dock, sparkle won't update its icon if the app icon changes.
+	NSImage *currentIcon = [NSImage imageNamed:@"td"];
+	if (currentIcon != nil)
+		[NSApp setApplicationIconImage:currentIcon];
 }
 
 - (void)updateCredentialList {
@@ -109,13 +116,19 @@ OSStatus keychainCallback (SecKeychainEvent keychainEvent, SecKeychainCallbackIn
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:help]];
 }
 
-- (void)launchSalesforceForClient:(ZKSforceClient *)sforce {
+- (void)launchSalesforceForClient:(ZKSforceClient *)sforce andCredential:(Credential *)credential {
 	[sforce setCacheDescribes:YES];
 	ZKDescribeSObject *desc = [self describeSomethingWithUrls:sforce];
 	NSString *sUrl = desc != nil ? [desc urlNew] : [sforce serverUrl];
 	NSURL *url = [NSURL URLWithString:sUrl];
 	NSURL * fd = [NSURL URLWithString:[NSString stringWithFormat:@"/secur/frontdoor.jsp?sid=%@", [sforce sessionId]] relativeToURL:url];
-	[[NSWorkspace sharedWorkspace] openURL:fd];
+
+	NSString *bundleIdentifier = [[credential browser] bundleIdentifier];
+	if (bundleIdentifier == nil)
+		[[NSWorkspace sharedWorkspace] openURL:fd];
+	else
+		[[NSWorkspace sharedWorkspace] openURLs:[NSArray arrayWithObject:fd] withAppBundleIdentifier:bundleIdentifier 
+			options:NSWorkspaceLaunchAsync additionalEventParamDescriptor:nil launchIdentifiers:nil];
 }
 
 - (IBAction)performLogin:(id)sender {
@@ -123,7 +136,7 @@ OSStatus keychainCallback (SecKeychainEvent keychainEvent, SecKeychainCallbackIn
 	ZKSforceClient *sforce = [self clientForServer:[c server]];
 	@try {
 		[sforce login:[c username] password:[c password]];
-		[self launchSalesforceForClient:sforce];
+		[self launchSalesforceForClient:sforce andCredential:c];
 	}
 	@catch (ZKSoapException *ex) {
 		NSBeep();

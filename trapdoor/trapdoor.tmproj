@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>NewCredentialsController.m</string>
+	<string>AppController.m</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -14,9 +14,66 @@
 					<array>
 						<dict>
 							<key>filename</key>
+							<string>../common/GDGradient.h</string>
+							<key>lastUsed</key>
+							<date>2007-04-21T22:26:44Z</date>
+						</dict>
+						<dict>
+							<key>filename</key>
+							<string>../common/GDGradient.m</string>
+							<key>lastUsed</key>
+							<date>2007-04-21T22:17:42Z</date>
+						</dict>
+						<dict>
+							<key>filename</key>
+							<string>../common/GDOutlineView.h</string>
+							<key>lastUsed</key>
+							<date>2007-04-23T03:33:55Z</date>
+						</dict>
+						<dict>
+							<key>filename</key>
+							<string>../common/GDOutlineView.m</string>
+							<key>lastUsed</key>
+							<date>2007-04-21T22:18:11Z</date>
+						</dict>
+						<dict>
+							<key>filename</key>
+							<string>../common/GDSourceListCell.h</string>
+							<key>lastUsed</key>
+							<date>2007-04-26T03:36:04Z</date>
+						</dict>
+						<dict>
+							<key>filename</key>
+							<string>../common/GDSourceListCell.m</string>
+							<key>lastUsed</key>
+							<date>2007-05-02T04:11:04Z</date>
+						</dict>
+					</array>
+					<key>expanded</key>
+					<true/>
+					<key>name</key>
+					<string>UI Widgets</string>
+				</dict>
+				<dict>
+					<key>children</key>
+					<array>
+						<dict>
+							<key>filename</key>
+							<string>CredentialEditor.h</string>
+							<key>lastUsed</key>
+							<date>2007-05-02T03:44:58Z</date>
+						</dict>
+						<dict>
+							<key>filename</key>
+							<string>CredentialEditor.m</string>
+							<key>lastUsed</key>
+							<date>2007-05-02T03:45:22Z</date>
+						</dict>
+						<dict>
+							<key>filename</key>
 							<string>NewPasswordController.h</string>
 							<key>lastUsed</key>
-							<date>2007-02-22T04:49:38Z</date>
+							<date>2007-04-28T21:10:38Z</date>
 						</dict>
 						<dict>
 							<key>filename</key>
@@ -28,39 +85,87 @@
 							<key>filename</key>
 							<string>AppController.h</string>
 							<key>lastUsed</key>
-							<date>2007-02-22T06:40:35Z</date>
+							<date>2007-04-26T05:02:19Z</date>
 						</dict>
 						<dict>
 							<key>filename</key>
 							<string>AppController.m</string>
 							<key>lastUsed</key>
-							<date>2007-02-22T06:40:33Z</date>
-						</dict>
-						<dict>
-							<key>filename</key>
-							<string>NewCredentialsController.h</string>
-							<key>lastUsed</key>
-							<date>2007-02-22T06:40:51Z</date>
-						</dict>
-						<dict>
-							<key>filename</key>
-							<string>NewCredentialsController.m</string>
-							<key>lastUsed</key>
-							<date>2007-02-22T06:40:51Z</date>
+							<date>2007-05-02T04:11:04Z</date>
 							<key>selected</key>
 							<true/>
 						</dict>
 						<dict>
 							<key>filename</key>
+							<string>NewCredentialsController.h</string>
+							<key>lastUsed</key>
+							<date>2007-05-02T03:17:56Z</date>
+						</dict>
+						<dict>
+							<key>filename</key>
+							<string>NewCredentialsController.m</string>
+							<key>lastUsed</key>
+							<date>2007-05-02T03:29:53Z</date>
+						</dict>
+						<dict>
+							<key>filename</key>
 							<string>../common/credential.h</string>
 							<key>lastUsed</key>
-							<date>2007-02-22T06:40:50Z</date>
+							<date>2007-05-02T03:42:06Z</date>
 						</dict>
 						<dict>
 							<key>filename</key>
 							<string>../common/credential.m</string>
 							<key>lastUsed</key>
-							<date>2007-02-22T06:40:46Z</date>
+							<date>2007-05-02T03:42:05Z</date>
+						</dict>
+						<dict>
+							<key>filename</key>
+							<string>BrowserSetting.h</string>
+							<key>lastUsed</key>
+							<date>2007-04-26T05:02:17Z</date>
+						</dict>
+						<dict>
+							<key>filename</key>
+							<string>BrowserSetting.m</string>
+							<key>lastUsed</key>
+							<date>2007-04-26T05:02:16Z</date>
+						</dict>
+						<dict>
+							<key>filename</key>
+							<string>Browser.h</string>
+							<key>lastUsed</key>
+							<date>2007-04-26T03:32:43Z</date>
+						</dict>
+						<dict>
+							<key>filename</key>
+							<string>Browser.m</string>
+							<key>lastUsed</key>
+							<date>2007-04-26T05:02:15Z</date>
+						</dict>
+						<dict>
+							<key>filename</key>
+							<string>NewServerController.h</string>
+							<key>lastUsed</key>
+							<date>2007-04-28T21:12:41Z</date>
+						</dict>
+						<dict>
+							<key>filename</key>
+							<string>NewServerController.m</string>
+							<key>lastUsed</key>
+							<date>2007-04-28T20:45:25Z</date>
+						</dict>
+						<dict>
+							<key>filename</key>
+							<string>AllCredentialsController.h</string>
+							<key>lastUsed</key>
+							<date>2007-05-02T03:44:54Z</date>
+						</dict>
+						<dict>
+							<key>filename</key>
+							<string>AllCredentialsController.m</string>
+							<key>lastUsed</key>
+							<date>2007-05-02T04:07:27Z</date>
 						</dict>
 					</array>
 					<key>expanded</key>
@@ -100,7 +205,7 @@
 							<key>filename</key>
 							<string>Info.plist</string>
 							<key>lastUsed</key>
-							<date>2007-02-22T06:22:50Z</date>
+							<date>2007-04-21T22:31:49Z</date>
 						</dict>
 						<dict>
 							<key>children</key>
@@ -212,6 +317,8 @@
 						<dict>
 							<key>filename</key>
 							<string>../sforce/zkSoapException.h</string>
+							<key>lastUsed</key>
+							<date>2007-04-21T22:17:25Z</date>
 						</dict>
 						<dict>
 							<key>filename</key>
@@ -247,52 +354,120 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>200</integer>
+	<integer>263</integer>
 	<key>metaData</key>
 	<dict>
-		<key>../common/credential.h</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>17</integer>
-				<key>line</key>
-				<integer>34</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>6</integer>
-				<key>line</key>
-				<integer>34</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>31</integer>
-				<key>line</key>
-				<integer>34</integer>
-			</dict>
-		</dict>
-		<key>../common/credential.m</key>
+		<key>../common/GDGradient.h</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>74</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>../common/GDGradient.m</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>139</integer>
+		</dict>
+		<key>../common/GDOutlineView.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>35</integer>
+				<key>line</key>
+				<integer>8</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>../common/GDOutlineView.m</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>220</integer>
+		</dict>
+		<key>../common/GDSourceListCell.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>../common/GDSourceListCell.m</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>46</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>19</integer>
+		</dict>
+		<key>../common/credential.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>26</integer>
+				<key>line</key>
+				<integer>48</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>../common/credential.m</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>26</integer>
+				<key>line</key>
+				<integer>135</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>90</integer>
 		</dict>
 		<key>../sforce/zkEnvelope.m</key>
 		<dict>
@@ -338,14 +513,56 @@
 				<integer>61</integer>
 			</dict>
 		</dict>
-		<key>AppController.h</key>
+		<key>../sforce/zkSoapException.h</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>7</integer>
+				<integer>34</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>AllCredentialsController.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>36</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>AllCredentialsController.m</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>26</integer>
+				<key>line</key>
+				<integer>164</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>135</integer>
+		</dict>
+		<key>AppController.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>98</integer>
+				<key>line</key>
+				<integer>22</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -357,37 +574,169 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>11</integer>
+				<integer>33</integer>
 				<key>line</key>
-				<integer>189</integer>
+				<integer>5</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>128</integer>
+			<integer>0</integer>
+		</dict>
+		<key>Browser.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>19</integer>
+				<key>line</key>
+				<integer>15</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>13</integer>
+				<key>line</key>
+				<integer>15</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>21</integer>
+				<key>line</key>
+				<integer>15</integer>
+			</dict>
+		</dict>
+		<key>Browser.m</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>23</integer>
+				<key>line</key>
+				<integer>44</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>BrowserSetting.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>16</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>BrowserSetting.m</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>15</integer>
+				<key>line</key>
+				<integer>11</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>CredentialEditor.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>16</integer>
+				<key>line</key>
+				<integer>39</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>12</integer>
+				<key>line</key>
+				<integer>39</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>30</integer>
+				<key>line</key>
+				<integer>39</integer>
+			</dict>
+		</dict>
+		<key>CredentialEditor.m</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>47</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>33</integer>
 		</dict>
 		<key>Info.plist</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>22</integer>
+				<integer>9</integer>
 				<key>line</key>
-				<integer>19</integer>
+				<integer>30</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>6</integer>
+				<key>line</key>
+				<integer>30</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>16</integer>
+				<key>line</key>
+				<integer>30</integer>
+			</dict>
 		</dict>
 		<key>NewCredentialsController.h</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>22</integer>
+				<integer>46</integer>
 				<key>line</key>
-				<integer>35</integer>
+				<integer>17</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -399,14 +748,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>30</integer>
+				<integer>26</integer>
 				<key>line</key>
-				<integer>95</integer>
+				<integer>14</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>53</integer>
+			<integer>0</integer>
 		</dict>
 		<key>NewPasswordController.h</key>
 		<dict>
@@ -436,6 +785,50 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>NewServerController.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>23</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>22</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>23</integer>
+			</dict>
+		</dict>
+		<key>NewServerController.m</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>35</integer>
+				<key>line</key>
+				<integer>25</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
@@ -443,8 +836,25 @@
 		<string>NewPasswordController.h</string>
 		<string>NewPasswordController.m</string>
 		<string>NewCredentialsController.h</string>
+		<string>NewServerController.h</string>
 		<string>NewCredentialsController.m</string>
+		<string>NewServerController.m</string>
+		<string>CredentialEditor.h</string>
+		<string>CredentialEditor.m</string>
+		<string>Browser.h</string>
+		<string>Browser.m</string>
 		<string>AppController.m</string>
+		<string>AllCredentialsController.h</string>
+		<string>AllCredentialsController.m</string>
+		<string>BrowserSetting.m</string>
+		<string>BrowserSetting.h</string>
+		<string>../sforce/zkSoapException.h</string>
+		<string>../common/GDGradient.h</string>
+		<string>../common/GDGradient.m</string>
+		<string>../common/GDOutlineView.h</string>
+		<string>../common/GDOutlineView.m</string>
+		<string>../common/GDSourceListCell.h</string>
+		<string>../common/GDSourceListCell.m</string>
 		<string>../common/credential.m</string>
 		<string>../common/credential.h</string>
 		<string>Info.plist</string>
@@ -454,6 +864,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{515, 213}, {1480, 1280}}</string>
+	<string>{{377, 131}, {1480, 1280}}</string>
 </dict>
 </plist>

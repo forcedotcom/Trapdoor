@@ -7,25 +7,26 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "NewServerController.h"
 
 @class AppController;
+@class Browser;
 
-@interface NewCredentialsController : NSObject {
-	IBOutlet NSWindow 		*window;
-	IBOutlet NSWindow 		*addServerWindow;
-	IBOutlet AppController 	*mainController;
+@interface NewCredentialsController : NSObject <NewServerAdded> {
+	IBOutlet NSWindow 				*window;
+	IBOutlet AppController 			*mainController;
+	IBOutlet NewServerController 	*newServerController;
 	
 	NSString *newUsername;
 	NSString *newPassword;
 	NSString *newServer;
 	NSString *newAlias;
+	Browser  *newBrowser;
 }
 
 - (IBAction)addCredential:(id)sender;
 - (IBAction)addAndLogin:(id)sender;
 - (IBAction)addServer:(id)sender;
-- (IBAction)cancelAddServer:(id)sender;
-- (IBAction)showAddServer:(id)sender;
 
 - (NSString *)newUsername;
 - (void)setNewUsername:(NSString *)s;
@@ -35,5 +36,8 @@
 - (void)setNewServer:(NSString *)s;
 - (NSString *)newAlias;
 - (void)setNewAlias:(NSString *)aNewAlias;
+- (Browser *)newBrowser;
+- (void)setNewBrowser:(Browser *)aNewBrowser;
+- (NSArray *)browsers;
 
 @end

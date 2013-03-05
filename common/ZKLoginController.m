@@ -56,6 +56,20 @@ static NSString * login_lastUsernameKey = @"login_lastUserName";
 	[self setClientId:cid];
 }
 
+- (void)endModalWindow:(id)sforce {
+	[NSApp stopModal];
+}
+
+- (ZKSforceClient *)showModalLoginWindow:(id)sender {
+	[self loadNib];
+	target = self;
+	selector = @selector(endModalWindow:);
+	modalWindow = nil;
+	[NSApp runModalForWindow:window];
+	[window close];
+	return [sforce loggedIn] ? sforce : nil;
+}
+
 - (void)showLoginWindow:(id)sender target:(id)t selector:(SEL)s {
 	[self loadNib];
 	target = t;
@@ -130,7 +144,9 @@ static NSString *test = @"https://test.salesforce.com";
 }
 
 - (IBAction)cancelLogin:(id)sender {
-	if (modalWindow != nil) {
+	if (target == self) {
+		[NSApp stopModal];
+	} else if (modalWindow != nil) {
 		[NSApp endSheet:window];
 		[window orderOut:sender];
 	} else {

@@ -23,7 +23,7 @@
 	@try {
 		[sforce login:[credential username] password:password];
 		[credential update:[credential username] password:password];
-		[mainController launchSalesforceForClient:sforce];
+		[mainController launchSalesforceForClient:sforce andCredential:credential];
 		[window orderOut:sender];
 		[self setCredential:nil];
 		[self setError:nil];

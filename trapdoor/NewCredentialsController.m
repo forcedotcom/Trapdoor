@@ -11,12 +11,15 @@
 #import "zkSforceClient.h"
 #import "zkSoapException.h"
 #import "credential.h"
+#import "Browser.h"
+#import "BrowserSetting.h"
 
 @implementation NewCredentialsController
 
 - (id)init {
 	self = [super init];
 	[self setNewServer:prodUrl];
+	[self setNewBrowser:[Browser forBundleIdentifier:nil]];
 	return self;
 }
 
@@ -24,6 +27,7 @@
 	[newUsername release];
 	[newPassword release];
 	[newServer release];
+	[newBrowser release];
 	[super dealloc];
 }
 
@@ -44,11 +48,13 @@
 	ZKSforceClient *sf = [self validateCredentials];
 	if (sf == nil) return; 
 	Credential *c = [mainController createCredential:newUsername password:newPassword server:newServer];
+	if (c == nil) return;
 	if ([newAlias length] > 0)
 		[c setComment:newAlias];
+	[c setBrowser:newBrowser];
 	[window performClose:self];
 	if (openWhenDone)
-		[mainController launchSalesforceForClient:sf];
+		[mainController launchSalesforceForClient:sf andCredential:c];
 }
 
 - (IBAction)addCredential:(id)sender {
@@ -96,23 +102,25 @@
 	newAlias = [aNewAlias retain];
 }
 
-- (IBAction)addServer:(id)sender {
-	NSArray *servers = [[NSUserDefaults standardUserDefaults] objectForKey:@"servers"];
-	if ([servers containsObject:newServer]) return;
-	NSMutableArray *s = [NSMutableArray arrayWithArray:servers];
-	[s addObject:newServer];
-	[[NSUserDefaults standardUserDefaults] setObject:s forKey:@"servers"];
-	[self cancelAddServer:sender];
+- (Browser *)newBrowser {
+	return newBrowser;
 }
 
-- (IBAction)cancelAddServer:(id)sender {
-	[NSApp endSheet:addServerWindow];
-	[addServerWindow orderOut:sender];
+- (void)setNewBrowser:(Browser *)aNewBrowser {
+	if (aNewBrowser == newBrowser) return;
+	[newBrowser release];
+	newBrowser = [aNewBrowser retain];
 }
 
-- (IBAction)showAddServer:(id)sender {
-	[NSApp beginSheet:addServerWindow modalForWindow:window modalDelegate:self didEndSelector:nil contextInfo:nil];
-	[addServerWindow orderFront:sender];
+- (void)addServer:(id)sender {
+	[newServerController showAddServer:window finishedTarget:self];
 }
 
+- (void)newServerAdded:(NSString *)server {
+	[self setNewServer:server];
+}
+
+- (NSArray *)browsers {
+	return [Browser browsers];
+}
 @end

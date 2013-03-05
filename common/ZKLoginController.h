@@ -26,6 +26,7 @@
 	IBOutlet NSProgressIndicator *loginProgress;
 }
 
+- (ZKSforceClient *)showModalLoginWindow:(id)sender;
 - (void)showLoginWindow:(id)sender target:(id)target selector:(SEL)selector;
 - (void)showLoginSheet:(NSWindow *)modalForWindow target:(id)target selector:(SEL)selector;
 

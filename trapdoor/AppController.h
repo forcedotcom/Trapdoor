@@ -20,7 +20,7 @@ extern NSString *prodUrl, *testUrl;
 
 - (IBAction)launchHelp:(id)sender;
 - (IBAction)performLogin:(id)sender;
-- (void)launchSalesforceForClient:(ZKSforceClient *)client;
+- (void)launchSalesforceForClient:(ZKSforceClient *)client andCredential:(Credential *)credential;
 - (BOOL)hasSomeCredentials;
 - (ZKSforceClient *)clientForServer:(NSString *)server;
 - (Credential *)createCredential:(NSString *)newUsername password:(NSString *)newPassword server:(NSString *)newServer;

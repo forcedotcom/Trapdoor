@@ -35,14 +35,19 @@
 + (id)createCredentialForServer:(NSString *)protocolAndServer username:(NSString *)un password:(NSString *)pwd;
 
 - (id)initForServer:(NSString *)server username:(NSString *)un keychainItem:(SecKeychainItemRef)kcItem;
+
 - (NSString *)server;
 - (NSString *)username;
 - (NSString *)password;
 - (NSString *)comment;
 
+- (OSStatus)setServer:(NSString *)newServer;
+- (OSStatus)setUsername:(NSString *)newUsername;
+- (OSStatus)setPassword:(NSString *)newPassword;
+- (OSStatus)setComment:(NSString *)newComment;
+
 - (void)removeFromKeychain;
 - (OSStatus)update:(NSString *)username password:(NSString *)password;
-- (OSStatus)setComment:(NSString *)newComment;
 @end
 
 @interface NSURL (Keychain)

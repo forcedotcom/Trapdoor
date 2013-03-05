@@ -15,8 +15,15 @@
 		9766A3BC0B59B4E100C18E5B /* minus-8.png in Resources */ = {isa = PBXBuildFile; fileRef = 9766A3BA0B59B4E100C18E5B /* minus-8.png */; };
 		9766A3BD0B59B4E100C18E5B /* plus-8.png in Resources */ = {isa = PBXBuildFile; fileRef = 9766A3BB0B59B4E100C18E5B /* plus-8.png */; };
 		F41C2C520B667A4C00947837 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F41C2C510B667A4C00947837 /* Security.framework */; };
-		F4445C0E0B856D7600DBA5B5 /* credential.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4445C0C0B856D7600DBA5B5 /* credential.h */; };
+		F4416AAC0BDAC4D3009A6E63 /* GDGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = F4416AA60BDAC4D3009A6E63 /* GDGradient.m */; };
+		F4416AAE0BDAC4D3009A6E63 /* GDOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4416AA80BDAC4D3009A6E63 /* GDOutlineView.m */; };
+		F4416AB00BDAC4D3009A6E63 /* GDSourceListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4416AAA0BDAC4D3009A6E63 /* GDSourceListCell.m */; };
+		F4416AB90BDAC7C0009A6E63 /* Browser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4416AB70BDAC7C0009A6E63 /* Browser.m */; };
+		F4416AF00BDAD294009A6E63 /* BrowserSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = F4416AEE0BDAD294009A6E63 /* BrowserSetting.m */; };
+		F4416AF90BDADBB7009A6E63 /* AllCredentialsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4416AF70BDADBB7009A6E63 /* AllCredentialsController.m */; };
 		F4445C0F0B856D7600DBA5B5 /* credential.m in Sources */ = {isa = PBXBuildFile; fileRef = F4445C0D0B856D7600DBA5B5 /* credential.m */; };
+		F46129610BE3E6C400886443 /* NewServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = F461295F0BE3E6C400886443 /* NewServerController.m */; };
+		F4A0D5C10BE05A8B00E197F2 /* CredentialEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A0D5BF0BE05A8B00E197F2 /* CredentialEditor.m */; };
 		F4A119660B68602600B15DC2 /* zkEnvelope.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A1195D0B68602600B15DC2 /* zkEnvelope.m */; };
 		F4A119670B68602600B15DC2 /* zkSforceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A1195F0B68602600B15DC2 /* zkSforceClient.m */; };
 		F4A119680B68602600B15DC2 /* zkSoapException.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A119610B68602600B15DC2 /* zkSoapException.m */; };
@@ -30,7 +37,6 @@
 		F4A119890B6862CE00B15DC2 /* ZKRecordTypeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A119800B6862CE00B15DC2 /* ZKRecordTypeInfo.m */; };
 		F4A1198A0B6862CE00B15DC2 /* zkSaveResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A119820B6862CE00B15DC2 /* zkSaveResult.m */; };
 		F4A1198B0B6862CE00B15DC2 /* zkSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A119840B6862CE00B15DC2 /* zkSObject.m */; };
-		F4B3C0B70B8D54B3007E32C5 /* NewPasswordController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B3C0B50B8D54B3007E32C5 /* NewPasswordController.h */; };
 		F4B3C0B80B8D54B3007E32C5 /* NewPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3C0B60B8D54B3007E32C5 /* NewPasswordController.m */; };
 		F4F09D4A0B686E2C00C972C4 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4F09D490B686E2C00C972C4 /* Sparkle.framework */; };
 		F4F09D650B686E5100C972C4 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4F09D490B686E2C00C972C4 /* Sparkle.framework */; };
@@ -47,8 +53,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				F4F09D650B686E5100C972C4 /* Sparkle.framework in CopyFiles */,
-				F4445C0E0B856D7600DBA5B5 /* credential.h in CopyFiles */,
-				F4B3C0B70B8D54B3007E32C5 /* NewPasswordController.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,8 +74,24 @@
 		9766A3BA0B59B4E100C18E5B /* minus-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "minus-8.png"; sourceTree = "<group>"; };
 		9766A3BB0B59B4E100C18E5B /* plus-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-8.png"; sourceTree = "<group>"; };
 		F41C2C510B667A4C00947837 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
+		F4416AA50BDAC4D3009A6E63 /* GDGradient.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GDGradient.h; path = ../common/GDGradient.h; sourceTree = SOURCE_ROOT; };
+		F4416AA60BDAC4D3009A6E63 /* GDGradient.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = GDGradient.m; path = ../common/GDGradient.m; sourceTree = SOURCE_ROOT; };
+		F4416AA70BDAC4D3009A6E63 /* GDOutlineView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GDOutlineView.h; path = ../common/GDOutlineView.h; sourceTree = SOURCE_ROOT; };
+		F4416AA80BDAC4D3009A6E63 /* GDOutlineView.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = GDOutlineView.m; path = ../common/GDOutlineView.m; sourceTree = SOURCE_ROOT; };
+		F4416AA90BDAC4D3009A6E63 /* GDSourceListCell.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GDSourceListCell.h; path = ../common/GDSourceListCell.h; sourceTree = SOURCE_ROOT; };
+		F4416AAA0BDAC4D3009A6E63 /* GDSourceListCell.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = GDSourceListCell.m; path = ../common/GDSourceListCell.m; sourceTree = SOURCE_ROOT; };
+		F4416AB60BDAC7C0009A6E63 /* Browser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Browser.h; sourceTree = "<group>"; };
+		F4416AB70BDAC7C0009A6E63 /* Browser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Browser.m; sourceTree = "<group>"; };
+		F4416AED0BDAD294009A6E63 /* BrowserSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowserSetting.h; sourceTree = "<group>"; };
+		F4416AEE0BDAD294009A6E63 /* BrowserSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowserSetting.m; sourceTree = "<group>"; };
+		F4416AF60BDADBB7009A6E63 /* AllCredentialsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllCredentialsController.h; sourceTree = "<group>"; };
+		F4416AF70BDADBB7009A6E63 /* AllCredentialsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllCredentialsController.m; sourceTree = "<group>"; };
 		F4445C0C0B856D7600DBA5B5 /* credential.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = credential.h; path = ../common/credential.h; sourceTree = SOURCE_ROOT; };
 		F4445C0D0B856D7600DBA5B5 /* credential.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = credential.m; path = ../common/credential.m; sourceTree = SOURCE_ROOT; };
+		F461295E0BE3E6C400886443 /* NewServerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewServerController.h; sourceTree = "<group>"; };
+		F461295F0BE3E6C400886443 /* NewServerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewServerController.m; sourceTree = "<group>"; };
+		F4A0D5BE0BE05A8B00E197F2 /* CredentialEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CredentialEditor.h; sourceTree = "<group>"; };
+		F4A0D5BF0BE05A8B00E197F2 /* CredentialEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialEditor.m; sourceTree = "<group>"; };
 		F4A1195C0B68602600B15DC2 /* zkEnvelope.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = zkEnvelope.h; path = ../sforce/zkEnvelope.h; sourceTree = SOURCE_ROOT; };
 		F4A1195D0B68602600B15DC2 /* zkEnvelope.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = zkEnvelope.m; path = ../sforce/zkEnvelope.m; sourceTree = SOURCE_ROOT; };
 		F4A1195E0B68602600B15DC2 /* zkSforceClient.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = zkSforceClient.h; path = ../sforce/zkSforceClient.h; sourceTree = SOURCE_ROOT; };
@@ -132,6 +152,16 @@
 				F4F09D6A0B6871F800C972C4 /* NewCredentialsController.m */,
 				F4B3C0B50B8D54B3007E32C5 /* NewPasswordController.h */,
 				F4B3C0B60B8D54B3007E32C5 /* NewPasswordController.m */,
+				F4416AB60BDAC7C0009A6E63 /* Browser.h */,
+				F4416AB70BDAC7C0009A6E63 /* Browser.m */,
+				F4416AED0BDAD294009A6E63 /* BrowserSetting.h */,
+				F4416AEE0BDAD294009A6E63 /* BrowserSetting.m */,
+				F4416AF60BDADBB7009A6E63 /* AllCredentialsController.h */,
+				F4416AF70BDADBB7009A6E63 /* AllCredentialsController.m */,
+				F4A0D5BE0BE05A8B00E197F2 /* CredentialEditor.h */,
+				F4A0D5BF0BE05A8B00E197F2 /* CredentialEditor.m */,
+				F461295E0BE3E6C400886443 /* NewServerController.h */,
+				F461295F0BE3E6C400886443 /* NewServerController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -167,6 +197,7 @@
 		29B97314FDCFA39411CA2CEA /* trapdoor */ = {
 			isa = PBXGroup;
 			children = (
+				F4416AA40BDAC4BF009A6E63 /* UIWidgets */,
 				F4A1195B0B685FFB00B15DC2 /* sforce */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -207,6 +238,19 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F4416AA40BDAC4BF009A6E63 /* UIWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				F4416AA50BDAC4D3009A6E63 /* GDGradient.h */,
+				F4416AA60BDAC4D3009A6E63 /* GDGradient.m */,
+				F4416AA70BDAC4D3009A6E63 /* GDOutlineView.h */,
+				F4416AA80BDAC4D3009A6E63 /* GDOutlineView.m */,
+				F4416AA90BDAC4D3009A6E63 /* GDSourceListCell.h */,
+				F4416AAA0BDAC4D3009A6E63 /* GDSourceListCell.m */,
+			);
+			name = UIWidgets;
 			sourceTree = "<group>";
 		};
 		F4A1195B0B685FFB00B15DC2 /* sforce */ = {
@@ -318,6 +362,14 @@
 				F4F09D6C0B6871F800C972C4 /* NewCredentialsController.m in Sources */,
 				F4445C0F0B856D7600DBA5B5 /* credential.m in Sources */,
 				F4B3C0B80B8D54B3007E32C5 /* NewPasswordController.m in Sources */,
+				F4416AAC0BDAC4D3009A6E63 /* GDGradient.m in Sources */,
+				F4416AAE0BDAC4D3009A6E63 /* GDOutlineView.m in Sources */,
+				F4416AB00BDAC4D3009A6E63 /* GDSourceListCell.m in Sources */,
+				F4416AB90BDAC7C0009A6E63 /* Browser.m in Sources */,
+				F4416AF00BDAD294009A6E63 /* BrowserSetting.m in Sources */,
+				F4416AF90BDADBB7009A6E63 /* AllCredentialsController.m in Sources */,
+				F4A0D5C10BE05A8B00E197F2 /* CredentialEditor.m in Sources */,
+				F46129610BE3E6C400886443 /* NewServerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
