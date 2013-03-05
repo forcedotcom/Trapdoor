@@ -1,0 +1,52 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {launchHelp = id; performLogin = id; }; 
+            CLASS = AppController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                loginMenu = NSMenu; 
+                newpassController = NewPasswordController; 
+                welcomeWindow = NSWindow; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {"" = id; }; 
+            CLASS = FirstResponder; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {
+                addAndLogin = id; 
+                addCredential = id; 
+                addServer = id; 
+                cancelAddServer = id; 
+                showAddServer = id; 
+            }; 
+            CLASS = NewCredentialsController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                addServerWindow = NSWindow; 
+                mainController = AppController; 
+                window = NSWindow; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {login = id; }; 
+            CLASS = NewPasswordController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {mainController = AppController; window = NSWindow; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {checkForUpdates = id; }; 
+            CLASS = SUUpdater; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }
+    ); 
+    IBVersion = 1; 
+}

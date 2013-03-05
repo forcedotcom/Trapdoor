@@ -1,0 +1,436 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
+		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
+		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		9766A3B80B59B45E00C18E5B /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9766A3B70B59B45E00C18E5B /* AppController.m */; };
+		9766A3BC0B59B4E100C18E5B /* minus-8.png in Resources */ = {isa = PBXBuildFile; fileRef = 9766A3BA0B59B4E100C18E5B /* minus-8.png */; };
+		9766A3BD0B59B4E100C18E5B /* plus-8.png in Resources */ = {isa = PBXBuildFile; fileRef = 9766A3BB0B59B4E100C18E5B /* plus-8.png */; };
+		F41C2C520B667A4C00947837 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F41C2C510B667A4C00947837 /* Security.framework */; };
+		F4445C0E0B856D7600DBA5B5 /* credential.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4445C0C0B856D7600DBA5B5 /* credential.h */; };
+		F4445C0F0B856D7600DBA5B5 /* credential.m in Sources */ = {isa = PBXBuildFile; fileRef = F4445C0D0B856D7600DBA5B5 /* credential.m */; };
+		F4A119660B68602600B15DC2 /* zkEnvelope.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A1195D0B68602600B15DC2 /* zkEnvelope.m */; };
+		F4A119670B68602600B15DC2 /* zkSforceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A1195F0B68602600B15DC2 /* zkSforceClient.m */; };
+		F4A119680B68602600B15DC2 /* zkSoapException.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A119610B68602600B15DC2 /* zkSoapException.m */; };
+		F4A119690B68602600B15DC2 /* zkUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A119630B68602600B15DC2 /* zkUserInfo.m */; };
+		F4A1196A0B68602600B15DC2 /* zkXmlDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A119650B68602600B15DC2 /* zkXmlDeserializer.m */; };
+		F4A1196D0B6860C700B15DC2 /* zkDescribeSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A1196C0B6860C700B15DC2 /* zkDescribeSObject.m */; };
+		F4A119850B6862CE00B15DC2 /* zkChildRelationship.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A119780B6862CE00B15DC2 /* zkChildRelationship.m */; };
+		F4A119860B6862CE00B15DC2 /* zkDescribeField.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A1197A0B6862CE00B15DC2 /* zkDescribeField.m */; };
+		F4A119870B6862CE00B15DC2 /* ZKPicklistEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A1197C0B6862CE00B15DC2 /* ZKPicklistEntry.m */; };
+		F4A119880B6862CE00B15DC2 /* zkQueryResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A1197E0B6862CE00B15DC2 /* zkQueryResult.m */; };
+		F4A119890B6862CE00B15DC2 /* ZKRecordTypeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A119800B6862CE00B15DC2 /* ZKRecordTypeInfo.m */; };
+		F4A1198A0B6862CE00B15DC2 /* zkSaveResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A119820B6862CE00B15DC2 /* zkSaveResult.m */; };
+		F4A1198B0B6862CE00B15DC2 /* zkSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A119840B6862CE00B15DC2 /* zkSObject.m */; };
+		F4B3C0B70B8D54B3007E32C5 /* NewPasswordController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B3C0B50B8D54B3007E32C5 /* NewPasswordController.h */; };
+		F4B3C0B80B8D54B3007E32C5 /* NewPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3C0B60B8D54B3007E32C5 /* NewPasswordController.m */; };
+		F4F09D4A0B686E2C00C972C4 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4F09D490B686E2C00C972C4 /* Sparkle.framework */; };
+		F4F09D650B686E5100C972C4 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4F09D490B686E2C00C972C4 /* Sparkle.framework */; };
+		F4F09D6C0B6871F800C972C4 /* NewCredentialsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F09D6A0B6871F800C972C4 /* NewCredentialsController.m */; };
+		F4F09DB20B69175500C972C4 /* td.icns in Resources */ = {isa = PBXBuildFile; fileRef = F4F09DB10B69175500C972C4 /* td.icns */; };
+		F4F09E010B69B73300C972C4 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = F4F09E000B69B73300C972C4 /* Credits.html */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F4F09D610B686E3B00C972C4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F4F09D650B686E5100C972C4 /* Sparkle.framework in CopyFiles */,
+				F4445C0E0B856D7600DBA5B5 /* credential.h in CopyFiles */,
+				F4B3C0B70B8D54B3007E32C5 /* NewPasswordController.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		32CA4F630368D1EE00C91783 /* trapdoor_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trapdoor_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* Trapdoor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trapdoor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9766A3B60B59B45E00C18E5B /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
+		9766A3B70B59B45E00C18E5B /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
+		9766A3BA0B59B4E100C18E5B /* minus-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "minus-8.png"; sourceTree = "<group>"; };
+		9766A3BB0B59B4E100C18E5B /* plus-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-8.png"; sourceTree = "<group>"; };
+		F41C2C510B667A4C00947837 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
+		F4445C0C0B856D7600DBA5B5 /* credential.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = credential.h; path = ../common/credential.h; sourceTree = SOURCE_ROOT; };
+		F4445C0D0B856D7600DBA5B5 /* credential.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = credential.m; path = ../common/credential.m; sourceTree = SOURCE_ROOT; };
+		F4A1195C0B68602600B15DC2 /* zkEnvelope.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = zkEnvelope.h; path = ../sforce/zkEnvelope.h; sourceTree = SOURCE_ROOT; };
+		F4A1195D0B68602600B15DC2 /* zkEnvelope.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = zkEnvelope.m; path = ../sforce/zkEnvelope.m; sourceTree = SOURCE_ROOT; };
+		F4A1195E0B68602600B15DC2 /* zkSforceClient.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = zkSforceClient.h; path = ../sforce/zkSforceClient.h; sourceTree = SOURCE_ROOT; };
+		F4A1195F0B68602600B15DC2 /* zkSforceClient.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = zkSforceClient.m; path = ../sforce/zkSforceClient.m; sourceTree = SOURCE_ROOT; };
+		F4A119600B68602600B15DC2 /* zkSoapException.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = zkSoapException.h; path = ../sforce/zkSoapException.h; sourceTree = SOURCE_ROOT; };
+		F4A119610B68602600B15DC2 /* zkSoapException.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = zkSoapException.m; path = ../sforce/zkSoapException.m; sourceTree = SOURCE_ROOT; };
+		F4A119620B68602600B15DC2 /* zkUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = zkUserInfo.h; path = ../sforce/zkUserInfo.h; sourceTree = SOURCE_ROOT; };
+		F4A119630B68602600B15DC2 /* zkUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = zkUserInfo.m; path = ../sforce/zkUserInfo.m; sourceTree = SOURCE_ROOT; };
+		F4A119640B68602600B15DC2 /* zkXmlDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = zkXmlDeserializer.h; path = ../sforce/zkXmlDeserializer.h; sourceTree = SOURCE_ROOT; };
+		F4A119650B68602600B15DC2 /* zkXmlDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = zkXmlDeserializer.m; path = ../sforce/zkXmlDeserializer.m; sourceTree = SOURCE_ROOT; };
+		F4A1196B0B6860C700B15DC2 /* zkDescribeSObject.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = zkDescribeSObject.h; path = ../sforce/zkDescribeSObject.h; sourceTree = SOURCE_ROOT; };
+		F4A1196C0B6860C700B15DC2 /* zkDescribeSObject.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = zkDescribeSObject.m; path = ../sforce/zkDescribeSObject.m; sourceTree = SOURCE_ROOT; };
+		F4A119770B6862CE00B15DC2 /* zkChildRelationship.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = zkChildRelationship.h; path = ../sforce/zkChildRelationship.h; sourceTree = SOURCE_ROOT; };
+		F4A119780B6862CE00B15DC2 /* zkChildRelationship.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = zkChildRelationship.m; path = ../sforce/zkChildRelationship.m; sourceTree = SOURCE_ROOT; };
+		F4A119790B6862CE00B15DC2 /* zkDescribeField.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = zkDescribeField.h; path = ../sforce/zkDescribeField.h; sourceTree = SOURCE_ROOT; };
+		F4A1197A0B6862CE00B15DC2 /* zkDescribeField.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = zkDescribeField.m; path = ../sforce/zkDescribeField.m; sourceTree = SOURCE_ROOT; };
+		F4A1197B0B6862CE00B15DC2 /* ZKPicklistEntry.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ZKPicklistEntry.h; path = ../sforce/ZKPicklistEntry.h; sourceTree = SOURCE_ROOT; };
+		F4A1197C0B6862CE00B15DC2 /* ZKPicklistEntry.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = ZKPicklistEntry.m; path = ../sforce/ZKPicklistEntry.m; sourceTree = SOURCE_ROOT; };
+		F4A1197D0B6862CE00B15DC2 /* zkQueryResult.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = zkQueryResult.h; path = ../sforce/zkQueryResult.h; sourceTree = SOURCE_ROOT; };
+		F4A1197E0B6862CE00B15DC2 /* zkQueryResult.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = zkQueryResult.m; path = ../sforce/zkQueryResult.m; sourceTree = SOURCE_ROOT; };
+		F4A1197F0B6862CE00B15DC2 /* ZKRecordTypeInfo.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ZKRecordTypeInfo.h; path = ../sforce/ZKRecordTypeInfo.h; sourceTree = SOURCE_ROOT; };
+		F4A119800B6862CE00B15DC2 /* ZKRecordTypeInfo.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = ZKRecordTypeInfo.m; path = ../sforce/ZKRecordTypeInfo.m; sourceTree = SOURCE_ROOT; };
+		F4A119810B6862CE00B15DC2 /* zkSaveResult.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = zkSaveResult.h; path = ../sforce/zkSaveResult.h; sourceTree = SOURCE_ROOT; };
+		F4A119820B6862CE00B15DC2 /* zkSaveResult.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = zkSaveResult.m; path = ../sforce/zkSaveResult.m; sourceTree = SOURCE_ROOT; };
+		F4A119830B6862CE00B15DC2 /* zkSObject.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = zkSObject.h; path = ../sforce/zkSObject.h; sourceTree = SOURCE_ROOT; };
+		F4A119840B6862CE00B15DC2 /* zkSObject.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = zkSObject.m; path = ../sforce/zkSObject.m; sourceTree = SOURCE_ROOT; };
+		F4B3C0B50B8D54B3007E32C5 /* NewPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = NewPasswordController.h; sourceTree = "<group>"; };
+		F4B3C0B60B8D54B3007E32C5 /* NewPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NewPasswordController.m; sourceTree = "<group>"; };
+		F4F09D490B686E2C00C972C4 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		F4F09D690B6871F800C972C4 /* NewCredentialsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCredentialsController.h; sourceTree = "<group>"; };
+		F4F09D6A0B6871F800C972C4 /* NewCredentialsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCredentialsController.m; sourceTree = "<group>"; };
+		F4F09DB10B69175500C972C4 /* td.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = td.icns; sourceTree = "<group>"; };
+		F4F09E000B69B73300C972C4 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				F41C2C520B667A4C00947837 /* Security.framework in Frameworks */,
+				F4F09D4A0B686E2C00C972C4 /* Sparkle.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F4445C0C0B856D7600DBA5B5 /* credential.h */,
+				F4445C0D0B856D7600DBA5B5 /* credential.m */,
+				9766A3B60B59B45E00C18E5B /* AppController.h */,
+				9766A3B70B59B45E00C18E5B /* AppController.m */,
+				F4F09D690B6871F800C972C4 /* NewCredentialsController.h */,
+				F4F09D6A0B6871F800C972C4 /* NewCredentialsController.m */,
+				F4B3C0B50B8D54B3007E32C5 /* NewPasswordController.h */,
+				F4B3C0B60B8D54B3007E32C5 /* NewPasswordController.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4F09D490B686E2C00C972C4 /* Sparkle.framework */,
+				F41C2C510B667A4C00947837 /* Security.framework */,
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
+				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107320486CEB800E47090 /* Trapdoor.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* trapdoor */ = {
+			isa = PBXGroup;
+			children = (
+				F4A1195B0B685FFB00B15DC2 /* sforce */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = trapdoor;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* trapdoor_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F4F09E000B69B73300C972C4 /* Credits.html */,
+				F4F09DB10B69175500C972C4 /* td.icns */,
+				9766A3BA0B59B4E100C18E5B /* minus-8.png */,
+				9766A3BB0B59B4E100C18E5B /* plus-8.png */,
+				8D1107310486CEB800E47090 /* Info.plist */,
+				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F4A1195B0B685FFB00B15DC2 /* sforce */ = {
+			isa = PBXGroup;
+			children = (
+				F4A119770B6862CE00B15DC2 /* zkChildRelationship.h */,
+				F4A119780B6862CE00B15DC2 /* zkChildRelationship.m */,
+				F4A119790B6862CE00B15DC2 /* zkDescribeField.h */,
+				F4A1197A0B6862CE00B15DC2 /* zkDescribeField.m */,
+				F4A1197B0B6862CE00B15DC2 /* ZKPicklistEntry.h */,
+				F4A1197C0B6862CE00B15DC2 /* ZKPicklistEntry.m */,
+				F4A1197D0B6862CE00B15DC2 /* zkQueryResult.h */,
+				F4A1197E0B6862CE00B15DC2 /* zkQueryResult.m */,
+				F4A1197F0B6862CE00B15DC2 /* ZKRecordTypeInfo.h */,
+				F4A119800B6862CE00B15DC2 /* ZKRecordTypeInfo.m */,
+				F4A119810B6862CE00B15DC2 /* zkSaveResult.h */,
+				F4A119820B6862CE00B15DC2 /* zkSaveResult.m */,
+				F4A119830B6862CE00B15DC2 /* zkSObject.h */,
+				F4A119840B6862CE00B15DC2 /* zkSObject.m */,
+				F4A1196B0B6860C700B15DC2 /* zkDescribeSObject.h */,
+				F4A1196C0B6860C700B15DC2 /* zkDescribeSObject.m */,
+				F4A1195C0B68602600B15DC2 /* zkEnvelope.h */,
+				F4A1195D0B68602600B15DC2 /* zkEnvelope.m */,
+				F4A1195E0B68602600B15DC2 /* zkSforceClient.h */,
+				F4A1195F0B68602600B15DC2 /* zkSforceClient.m */,
+				F4A119600B68602600B15DC2 /* zkSoapException.h */,
+				F4A119610B68602600B15DC2 /* zkSoapException.m */,
+				F4A119620B68602600B15DC2 /* zkUserInfo.h */,
+				F4A119630B68602600B15DC2 /* zkUserInfo.m */,
+				F4A119640B68602600B15DC2 /* zkXmlDeserializer.h */,
+				F4A119650B68602600B15DC2 /* zkXmlDeserializer.m */,
+			);
+			name = sforce;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D1107260486CEB800E47090 /* Trapdoor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Trapdoor" */;
+			buildPhases = (
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+				F4F09D610B686E3B00C972C4 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Trapdoor;
+			productInstallPath = "$(HOME)/Applications";
+			productName = trapdoor;
+			productReference = 8D1107320486CEB800E47090 /* Trapdoor.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "trapdoor" */;
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* trapdoor */;
+			projectDirPath = "";
+			targets = (
+				8D1107260486CEB800E47090 /* Trapdoor */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D1107290486CEB800E47090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */,
+				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				9766A3BC0B59B4E100C18E5B /* minus-8.png in Resources */,
+				9766A3BD0B59B4E100C18E5B /* plus-8.png in Resources */,
+				F4F09DB20B69175500C972C4 /* td.icns in Resources */,
+				F4F09E010B69B73300C972C4 /* Credits.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D11072C0486CEB800E47090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072D0486CEB800E47090 /* main.m in Sources */,
+				9766A3B80B59B45E00C18E5B /* AppController.m in Sources */,
+				F4A119660B68602600B15DC2 /* zkEnvelope.m in Sources */,
+				F4A119670B68602600B15DC2 /* zkSforceClient.m in Sources */,
+				F4A119680B68602600B15DC2 /* zkSoapException.m in Sources */,
+				F4A119690B68602600B15DC2 /* zkUserInfo.m in Sources */,
+				F4A1196A0B68602600B15DC2 /* zkXmlDeserializer.m in Sources */,
+				F4A1196D0B6860C700B15DC2 /* zkDescribeSObject.m in Sources */,
+				F4A119850B6862CE00B15DC2 /* zkChildRelationship.m in Sources */,
+				F4A119860B6862CE00B15DC2 /* zkDescribeField.m in Sources */,
+				F4A119870B6862CE00B15DC2 /* ZKPicklistEntry.m in Sources */,
+				F4A119880B6862CE00B15DC2 /* zkQueryResult.m in Sources */,
+				F4A119890B6862CE00B15DC2 /* ZKRecordTypeInfo.m in Sources */,
+				F4A1198A0B6862CE00B15DC2 /* zkSaveResult.m in Sources */,
+				F4A1198B0B6862CE00B15DC2 /* zkSObject.m in Sources */,
+				F4F09D6C0B6871F800C972C4 /* NewCredentialsController.m in Sources */,
+				F4445C0F0B856D7600DBA5B5 /* credential.m in Sources */,
+				F4B3C0B80B8D54B3007E32C5 /* NewPasswordController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C165DFE840E0CC02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		29B97318FDCFA39411CA2CEA /* MainMenu.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				29B97319FDCFA39411CA2CEA /* English */,
+			);
+			name = MainMenu.nib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C01FCF4B08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = Trapdoor;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		C01FCF4C08A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = Trapdoor;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				PRODUCT_NAME = "";
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				PRODUCT_NAME = Trapdoor;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Trapdoor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4B08A954540054247B /* Debug */,
+				C01FCF4C08A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "trapdoor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

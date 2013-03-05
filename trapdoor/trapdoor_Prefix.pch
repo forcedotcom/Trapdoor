@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'trapdoor' target in the 'trapdoor' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
