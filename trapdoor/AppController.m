@@ -148,6 +148,7 @@ OSStatus keychainCallback (SecKeychainEvent keychainEvent, SecKeychainCallbackIn
 	Credential *c = nil;
 	NSString *lastServer = nil;
 	NSEnumerator *e = [currentCredentials objectEnumerator];
+	int keyShortCut = 1;
 	while (c = [e nextObject]) {
 		if (![[c server] isEqualToString:lastServer]) {
 			if (lastServer != nil) 
@@ -160,7 +161,8 @@ OSStatus keychainCallback (SecKeychainEvent keychainEvent, SecKeychainCallbackIn
 		NSString *itemTitle = [c username];
 		if ([[c comment] length] > 0)
 			itemTitle = [NSString stringWithFormat:@"%@ - %@", [c comment], [c username]];
-	    NSMenuItem *newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:itemTitle action:NULL keyEquivalent:@""];
+		NSString *shortcut = keyShortCut < 10 ? [NSString stringWithFormat:@"%d", keyShortCut++] : @"";
+	    NSMenuItem *newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:itemTitle action:NULL keyEquivalent:shortcut];
 		[newItem setRepresentedObject:c];
 	    [newItem setTarget:self];
 	    [newItem setAction:@selector(performLogin:)];
