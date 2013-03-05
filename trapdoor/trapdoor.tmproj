@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>AppController.m</string>
+	<string>AllCredentialsController.m</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -91,15 +91,13 @@
 							<key>filename</key>
 							<string>AppController.m</string>
 							<key>lastUsed</key>
-							<date>2007-05-02T04:11:04Z</date>
-							<key>selected</key>
-							<true/>
+							<date>2007-07-12T05:00:44Z</date>
 						</dict>
 						<dict>
 							<key>filename</key>
 							<string>NewCredentialsController.h</string>
 							<key>lastUsed</key>
-							<date>2007-05-02T03:17:56Z</date>
+							<date>2007-07-12T04:44:39Z</date>
 						</dict>
 						<dict>
 							<key>filename</key>
@@ -111,13 +109,13 @@
 							<key>filename</key>
 							<string>../common/credential.h</string>
 							<key>lastUsed</key>
-							<date>2007-05-02T03:42:06Z</date>
+							<date>2007-07-12T04:59:03Z</date>
 						</dict>
 						<dict>
 							<key>filename</key>
 							<string>../common/credential.m</string>
 							<key>lastUsed</key>
-							<date>2007-05-02T03:42:05Z</date>
+							<date>2007-07-12T05:00:22Z</date>
 						</dict>
 						<dict>
 							<key>filename</key>
@@ -165,7 +163,9 @@
 							<key>filename</key>
 							<string>AllCredentialsController.m</string>
 							<key>lastUsed</key>
-							<date>2007-05-02T04:07:27Z</date>
+							<date>2007-07-12T05:00:44Z</date>
+							<key>selected</key>
+							<true/>
 						</dict>
 					</array>
 					<key>expanded</key>
@@ -205,7 +205,7 @@
 							<key>filename</key>
 							<string>Info.plist</string>
 							<key>lastUsed</key>
-							<date>2007-04-21T22:31:49Z</date>
+							<date>2007-07-12T04:39:50Z</date>
 						</dict>
 						<dict>
 							<key>children</key>
@@ -446,28 +446,60 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>26</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>48</integer>
+				<integer>33</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>32</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>33</integer>
+			</dict>
 		</dict>
 		<key>../common/credential.m</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>26</integer>
+				<integer>19</integer>
 				<key>line</key>
-				<integer>135</integer>
+				<integer>67</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>90</integer>
+			<integer>16</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>13</integer>
+				<key>line</key>
+				<integer>67</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>39</integer>
+				<key>line</key>
+				<integer>67</integer>
+			</dict>
 		</dict>
 		<key>../sforce/zkEnvelope.m</key>
 		<dict>
@@ -546,14 +578,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>26</integer>
+				<integer>41</integer>
 				<key>line</key>
-				<integer>164</integer>
+				<integer>49</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>135</integer>
+			<integer>18</integer>
 		</dict>
 		<key>AppController.h</key>
 		<dict>
@@ -574,14 +606,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>33</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>5</integer>
+				<integer>60</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>27</integer>
 		</dict>
 		<key>Browser.h</key>
 		<dict>
@@ -704,30 +736,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>9</integer>
+				<integer>12</integer>
 				<key>line</key>
-				<integer>30</integer>
+				<integer>21</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>6</integer>
-				<key>line</key>
-				<integer>30</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>16</integer>
-				<key>line</key>
-				<integer>30</integer>
-			</dict>
 		</dict>
 		<key>NewCredentialsController.h</key>
 		<dict>

@@ -21,7 +21,7 @@
 
 
 #import "zkSforceClient.h"
-#import "zkEnvelope.h"
+#import "zkPartnerEnvelope.h"
 #import "zkQueryResult.h"
 #import "zkSaveResult.h"
 #import "zkSObject.h"
@@ -33,7 +33,6 @@ static const int MAX_SESSION_AGE = 25 * 60; // 25 minutes
 static const int SAVE_BATCH_SIZE = 25;
 
 @interface ZKSforceClient (Private)
-- (NSXMLNode *)sendRequest:(NSString *)payload;
 - (ZKQueryResult *)queryImpl:(NSString *)value operation:(NSString *)op name:(NSString *)elemName;
 - (NSArray *)sobjectsImpl:(NSArray *)objects name:(NSString *)elemName;
 - (void)checkSession;
@@ -52,11 +51,10 @@ static const int SAVE_BATCH_SIZE = 25;
 
 - (void)dealloc {
 	[authEndpointUrl release];
-	[endpointUrl release];
-	[sessionId release];
 	[username release];
 	[password release];
 	[clientId release];
+	[sessionId release];
 	[sessionExpiresAt release];
 	[userInfo release];
 	[describes release];
@@ -84,16 +82,6 @@ static const int SAVE_BATCH_SIZE = 25;
 
 - (void)setUpdateMru:(BOOL)aValue {
 	updateMru = aValue;
-}
-
-- (NSString *)clientId {
-	return clientId;
-}
-
-- (void)setClientId:(NSString *)aClientId {
-	aClientId = [aClientId copy];
-	[clientId release];
-	clientId = aClientId;
 }
 
 - (BOOL)cacheDescribes {
@@ -139,7 +127,7 @@ static const int SAVE_BATCH_SIZE = 25;
 	[endpointUrl release];
 	endpointUrl = [authEndpointUrl copy];
 
-	ZKEnvelope *env = [[ZKEnvelope alloc] initWithSessionHeader:nil clientId:clientId];
+	ZKEnvelope *env = [[ZKPartnerEnvelope alloc] initWithSessionHeader:nil clientId:clientId];
 	[env startElement:@"login"];
 	[env addElement:@"username" elemValue:username];
 	[env addElement:@"password" elemValue:password];
@@ -184,11 +172,22 @@ static const int SAVE_BATCH_SIZE = 25;
 	return sessionId;
 }
 
+
+- (NSString *)clientId {
+	return clientId;
+}
+
+- (void)setClientId:(NSString *)aClientId {
+	aClientId = [aClientId copy];
+	[clientId release];
+	clientId = aClientId;
+}
+
 - (NSArray *)describeGlobal {
 	if(!sessionId) return NULL;
 	[self checkSession];
 	
-	ZKEnvelope * env = [[ZKEnvelope alloc] initWithSessionHeader:sessionId clientId:clientId];
+	ZKEnvelope * env = [[ZKPartnerEnvelope alloc] initWithSessionHeader:sessionId clientId:clientId];
 	[env startElement:@"describeGlobal"];
 	[env endElement:@"describeGlobal"];
 	[env endElement:@"s:Body"];
@@ -213,7 +212,7 @@ static const int SAVE_BATCH_SIZE = 25;
 	}
 	[self checkSession];
 	
-	ZKEnvelope * env = [[ZKEnvelope alloc] initWithSessionHeader:sessionId clientId:clientId];
+	ZKEnvelope * env = [[ZKPartnerEnvelope alloc] initWithSessionHeader:sessionId clientId:clientId];
 	[env startElement:@"describeSObject"];
 	[env addElement:@"SobjectType" elemValue:sobjectName];
 	[env endElement:@"describeSObject"];
@@ -232,7 +231,7 @@ static const int SAVE_BATCH_SIZE = 25;
 - (NSArray *)search:(NSString *)sosl {
 	if (!sessionId) return NULL;
 	[self checkSession];
-	ZKEnvelope *env = [[ZKEnvelope alloc] initWithSessionHeader:sessionId clientId:clientId];
+	ZKEnvelope *env = [[ZKPartnerEnvelope alloc] initWithSessionHeader:sessionId clientId:clientId];
 	[env startElement:@"search"];
 	[env addElement:@"searchString" elemValue:sosl];
 	[env endElement:@"search"];
@@ -254,7 +253,7 @@ static const int SAVE_BATCH_SIZE = 25;
 - (NSString *)serverTimestamp {
 	if (!sessionId) return NULL;
 	[self checkSession];
-	ZKEnvelope *env = [[ZKEnvelope alloc] initWithSessionHeader:sessionId clientId:clientId];
+	ZKEnvelope *env = [[ZKPartnerEnvelope alloc] initWithSessionHeader:sessionId clientId:clientId];
 	[env startElement:@"getServerTimestamp"];
 	[env endElement:@"getServerTimestamp"];
 	[env endElement:@"s:Body"];
@@ -301,7 +300,7 @@ static const int SAVE_BATCH_SIZE = 25;
 		}
 		return allResults;
 	}
-	ZKEnvelope *env = [[ZKEnvelope alloc] initWithSessionAndMruHeaders:sessionId mru:updateMru clientId:clientId];
+	ZKEnvelope *env = [[ZKPartnerEnvelope alloc] initWithSessionAndMruHeaders:sessionId mru:updateMru clientId:clientId];
 	[env startElement:elemName];
 	NSEnumerator *e = [objects objectEnumerator];
 	ZKSObject *o;
@@ -328,7 +327,7 @@ static const int SAVE_BATCH_SIZE = 25;
 	if(!sessionId) return NULL;
 	[self checkSession];
 	
-	ZKEnvelope * env = [[ZKEnvelope alloc] initWithSessionHeader:sessionId clientId:clientId];
+	ZKEnvelope * env = [[ZKPartnerEnvelope alloc] initWithSessionHeader:sessionId clientId:clientId];
 	[env startElement:@"retrieve"];
 	[env addElement:@"fieldList" elemValue:fields];
 	[env addElement:@"sObjectType" elemValue:sobjectType];
@@ -354,7 +353,7 @@ static const int SAVE_BATCH_SIZE = 25;
 	if(!sessionId) return NULL;
 	[self checkSession];
 
-	ZKEnvelope *env = [[ZKEnvelope alloc] initWithSessionAndMruHeaders:sessionId mru:updateMru clientId:clientId];
+	ZKEnvelope *env = [[ZKPartnerEnvelope alloc] initWithSessionAndMruHeaders:sessionId mru:updateMru clientId:clientId];
 	[env startElement:@"delete"];
 	[env addElement:@"ids" elemValue:ids];
 	[env endElement:@"delete"];
@@ -378,7 +377,7 @@ static const int SAVE_BATCH_SIZE = 25;
 	if(!sessionId) return NULL;
 	[self checkSession];
 
-	ZKEnvelope *env = [[ZKEnvelope alloc] initWithSessionHeader:sessionId clientId:clientId];
+	ZKEnvelope *env = [[ZKPartnerEnvelope alloc] initWithSessionHeader:sessionId clientId:clientId];
 	[env startElement:operation];
 	[env addElement:elemName elemValue:value];
 	[env endElement:operation];
@@ -388,34 +387,6 @@ static const int SAVE_BATCH_SIZE = 25;
 	ZKQueryResult *result = [[ZKQueryResult alloc] initFromXmlNode:[[qr children] objectAtIndex:0]];
 	[env release];
 	return [result autorelease];
-}
-
-- (NSXMLNode *)sendRequest:(NSString *)payload {
-	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:endpointUrl]];
-	[request setHTTPMethod:@"POST"];
-	[request addValue:@"text/xml; charset=UTF-8" forHTTPHeaderField:@"content-type"];	
-	[request addValue:@"\"\"" forHTTPHeaderField:@"SOAPAction"];
-	
-	NSData *data = [payload dataUsingEncoding:NSUTF8StringEncoding];
-	[request setHTTPBody:data];
-	
-	NSHTTPURLResponse *resp = nil;
-	NSError *err = nil;
-	// todo, support request compression
-	// todo, support response compression
-	NSData *respPayload = [NSURLConnection sendSynchronousRequest:request returningResponse:&resp error:&err];
-	NSXMLDocument *doc = [[[NSXMLDocument alloc] initWithData:respPayload options:NSXMLNodeOptionsNone error:&err] autorelease];
-	if (err != NULL) {
-		@throw [NSException exceptionWithName:@"Xml error" reason:@"Unable to parse XML returned by server" userInfo:nil];
-	}
-	if (500 == [resp statusCode]) {
-		NSXMLNode * nFaultCode = [[doc nodesForXPath:@"/soapenv:Envelope/soapenv:Body/soapenv:Fault/faultcode" error:&err] objectAtIndex:0];
-		NSXMLNode * nFaultMsg  = [[doc nodesForXPath:@"/soapenv:Envelope/soapenv:Body/soapenv:Fault/faultstring" error:&err] objectAtIndex:0];
-		ZKSoapException *exception = [ZKSoapException exceptionWithFaultCode:[nFaultCode stringValue] faultString:[nFaultMsg stringValue]];
-		@throw exception;				
-	}	
-	NSXMLNode *body = [[doc nodesForXPath:@"/soapenv:Envelope/soapenv:Body" error:&err] objectAtIndex:0];
-	return [[body children] objectAtIndex:0];
 }
 
 @end

@@ -21,18 +21,18 @@
 
 
 #import <Cocoa/Cocoa.h>
+#import "zkBaseClient.h"
 
 @class ZKUserInfo;
 @class ZKDescribeSObject;
 @class ZKQueryResult;
 
-@interface ZKSforceClient : NSObject <NSCopying> {
+@interface ZKSforceClient : ZKBaseClient <NSCopying> {
 	NSString	*authEndpointUrl;
-	NSString	*endpointUrl;
-	NSString	*sessionId;
 	NSString	*username;
 	NSString	*password;
-	NSString	*clientId;
+	NSString	*clientId;	
+	NSString	*sessionId;
 	NSDate		*sessionExpiresAt;
 	BOOL		updateMru;
 	ZKUserInfo	*userInfo;
@@ -69,6 +69,7 @@
 - (void)setUpdateMru:(BOOL)aValue;
 - (NSString *)clientId;
 - (void)setClientId:(NSString *)aClientId;
+
 
 // describe caching
 - (BOOL)cacheDescribes;

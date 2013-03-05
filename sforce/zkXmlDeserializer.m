@@ -52,6 +52,10 @@
 	return [[self string:elem] intValue];
 }
 
+- (double)double:(NSString *)elem {
+	return [[self string:elem] doubleValue];
+}
+
 - (NSArray *)strings:(NSString *)elem {
 	NSArray *cached = [values objectForKey:elem];
 	if (cached != nil) return cached;
@@ -70,6 +74,24 @@
 	NSArray * nodes = [xmlElement elementsForName:elemName];
 	if ([nodes count] == 0) return nil;
 	return [[nodes objectAtIndex:0] stringValue];
+}
+
+- (NSArray *)complexTypeArrayFromElements:(NSString *)elemName cls:(Class)type {
+	NSArray *cached = [values objectForKey:elemName];
+	if (cached == nil) {
+		NSArray *elements = [node elementsForName:elemName];
+		NSMutableArray *results = [NSMutableArray arrayWithCapacity:[elements count]];
+		NSXMLElement * childNode;
+		NSEnumerator *e = [elements objectEnumerator];
+		while (childNode = [e nextObject]) {
+			NSObject *child = [[type alloc] initWithXmlElement:childNode];
+			[results addObject:child];
+			[child release];
+		}
+		[values setObject:results forKey:elemName];
+		cached = results;
+	}
+	return cached;
 }
 
 @end

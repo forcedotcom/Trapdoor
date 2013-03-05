@@ -47,7 +47,7 @@
 }
 
 - (void)reloadCredentials {
-	[self setCredentials:[Credential credentialsForServer:server]]; 
+	[self setCredentials:[Credential sortedCredentialsForServer:server]]; 
 }
 
 - (NSString *)server {

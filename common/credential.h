@@ -30,6 +30,7 @@
 }
 
 + (NSArray *)credentialsForServer:(NSString *)protocolAndServer;
++ (NSArray *)sortedCredentialsForServer:(NSString *)protocolAndServer;
 
 + (id)forServer:(NSString *)server username:(NSString *)un keychainItem:(SecKeychainItemRef)kcItem;
 + (id)createCredentialForServer:(NSString *)protocolAndServer username:(NSString *)un password:(NSString *)pwd;
@@ -40,11 +41,14 @@
 - (NSString *)username;
 - (NSString *)password;
 - (NSString *)comment;
+- (NSString *)creator;
+- (BOOL)canReadPasswordWithoutPrompt;
 
 - (OSStatus)setServer:(NSString *)newServer;
 - (OSStatus)setUsername:(NSString *)newUsername;
 - (OSStatus)setPassword:(NSString *)newPassword;
 - (OSStatus)setComment:(NSString *)newComment;
+- (OSStatus)setCreator:(NSString *)newCreator;
 
 - (void)removeFromKeychain;
 - (OSStatus)update:(NSString *)username password:(NSString *)password;

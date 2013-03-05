@@ -58,7 +58,7 @@ OSStatus keychainCallback (SecKeychainEvent keychainEvent, SecKeychainCallbackIn
 	NSString *server;
 	NSEnumerator *e = [servers objectEnumerator];
 	while (server = [e nextObject]) {
-		[all addObjectsFromArray:[Credential credentialsForServer:server]];
+		[all addObjectsFromArray:[Credential sortedCredentialsForServer:server]];
 	}
 	[currentCredentials release];
 	currentCredentials = [all retain];

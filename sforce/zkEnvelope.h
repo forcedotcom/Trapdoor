@@ -24,12 +24,16 @@
 #import "zkSObject.h"
 
 @interface ZKEnvelope : NSObject {
-	NSMutableString * env;
+	NSMutableString 	*env;
+	int					state;
 }
 
-- (id)initWithSessionHeader:(NSString *)sessionId clientId:(NSString *)clientId;
-- (id)initWithSessionAndMruHeaders:(NSString *)sessionId mru:(BOOL)mru clientId:(NSString *)clientId;
+- (void)start:(NSString *)primaryNamespceUri;
+- (void)writeSessionHeader:(NSString *)sessionId;
+- (void)writeCallOptionsHeader:(NSString *)callOptions;
+- (void)writeMruHeader:(BOOL)updateMru;
 
+- (void) moveToBody;
 - (void) startElement:(NSString *)elemName;
 - (void) endElement:(NSString *)elemName;
 - (void) writeText:(NSString *)text;

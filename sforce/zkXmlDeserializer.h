@@ -31,7 +31,10 @@
 - (NSString *)string:(NSString *)elem;
 - (BOOL)boolean:(NSString *)elem;
 - (int)integer:(NSString *)elem;
+- (double)double:(NSString *)elem;
 - (NSArray *)strings:(NSString *)elem;
 
 - (NSString *)string:(NSString *)elemName fromXmlElement:(NSXMLElement*)xmlElement;
+- (NSArray *)complexTypeArrayFromElements:(NSString *)elemName cls:(Class)type;
+
 @end

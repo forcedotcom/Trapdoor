@@ -24,37 +24,56 @@
 
 @implementation ZKEnvelope
 
-- (id)init {
-	self = [super init];
-	env = [NSMutableString stringWithString:@"<s:Envelope xmlns:s='http://schemas.xmlsoap.org/soap/envelope/' xmlns='urn:partner.soap.sforce.com'>"];
-	return self;
+enum envState {
+	inEnvelope = 1,
+	inHeaders = 2,
+	inBody = 3
+};
+
+- (void)start:(NSString *)primaryNamespceUri {
+	[env release];
+	env = [NSMutableString stringWithFormat:@"<s:Envelope xmlns:s='http://schemas.xmlsoap.org/soap/envelope/' xmlns='%@'>", primaryNamespceUri];
+	state = inEnvelope;
 }
 
-- (id)initWithSessionHeader:(NSString *)sessionId clientId:(NSString *)clientId {
-	return [self initWithSessionAndMruHeaders:sessionId mru:NO clientId:clientId];
-}
-
-- (id)initWithSessionAndMruHeaders:(NSString *)sessionId mru:(BOOL)mru clientId:(NSString *)clientId {
-	[self init];
+- (void)moveToHeaders {
+	if (state == inBody)
+		@throw [NSException exceptionWithName:@"Illegal State Exception" reason:@"Unable to write headers once we've moved to the body" userInfo:nil];
+	if (state == inHeaders) return;
 	[self startElement:@"s:Header"];
-	if ([sessionId length] > 0) {
-		[self startElement:@"SessionHeader"];
-		[self addElement:@"sessionId" elemValue:sessionId];
-		[self endElement:@"SessionHeader"];
-	}
-	if ([clientId length] > 0) {
-		[self startElement:@"CallOptions"];
-		[self addElement:@"client" elemValue:clientId];
-		[self endElement:@"CallOptions"];
-	}
-	if (mru) {
-		[self startElement:@"MruHeader"];
-		[self addElement:@"updateMru" elemValue:@"true"];
-		[self endElement:@"MruHeader"];
-	}
-	[self endElement:@"s:Header"];
-	[self startElement:@"s:Body"];
-	return self;
+	state = inHeaders;
+}
+
+- (void)writeSessionHeader:(NSString *)sessionId {
+	if ([sessionId length] == 0) return;
+	[self moveToHeaders];
+	[self startElement:@"SessionHeader"];
+	[self addElement:@"sessionId" elemValue:sessionId];
+	[self endElement:@"SessionHeader"];
+}
+
+- (void)writeCallOptionsHeader:(NSString *)clientId {
+	if ([clientId length] == 0) return;
+	[self moveToHeaders];
+	[self startElement:@"CallOptions"];
+	[self addElement:@"client" elemValue:clientId];
+	[self endElement:@"CallOptions"];
+}
+
+- (void)writeMruHeader:(BOOL)updateMru {
+	if (!updateMru) return;
+	[self moveToHeaders];
+	[self startElement:@"MruHeader"];
+	[self addElement:@"updateMru" elemValue:@"true"];
+	[self endElement:@"MruHeader"];
+}
+
+- (void) moveToBody {
+	if (state == inHeaders)
+		[self endElement:@"s:Header"];
+	if (state != inBody) 
+		[self startElement:@"s:Body"];
+	state = inBody;
 }
 
 - (void) addElement:(NSString *)elemName elemValue:(id)elemValue {

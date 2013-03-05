@@ -15,6 +15,8 @@
 		9766A3BC0B59B4E100C18E5B /* minus-8.png in Resources */ = {isa = PBXBuildFile; fileRef = 9766A3BA0B59B4E100C18E5B /* minus-8.png */; };
 		9766A3BD0B59B4E100C18E5B /* plus-8.png in Resources */ = {isa = PBXBuildFile; fileRef = 9766A3BB0B59B4E100C18E5B /* plus-8.png */; };
 		F41C2C520B667A4C00947837 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F41C2C510B667A4C00947837 /* Security.framework */; };
+		F42557D30C45E9B6008065AE /* zkBaseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F42557CF0C45E9B6008065AE /* zkBaseClient.m */; };
+		F42557D50C45E9B6008065AE /* ZKPartnerEnvelope.m in Sources */ = {isa = PBXBuildFile; fileRef = F42557D10C45E9B6008065AE /* ZKPartnerEnvelope.m */; };
 		F4416AAC0BDAC4D3009A6E63 /* GDGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = F4416AA60BDAC4D3009A6E63 /* GDGradient.m */; };
 		F4416AAE0BDAC4D3009A6E63 /* GDOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4416AA80BDAC4D3009A6E63 /* GDOutlineView.m */; };
 		F4416AB00BDAC4D3009A6E63 /* GDSourceListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4416AAA0BDAC4D3009A6E63 /* GDSourceListCell.m */; };
@@ -74,6 +76,10 @@
 		9766A3BA0B59B4E100C18E5B /* minus-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "minus-8.png"; sourceTree = "<group>"; };
 		9766A3BB0B59B4E100C18E5B /* plus-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-8.png"; sourceTree = "<group>"; };
 		F41C2C510B667A4C00947837 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
+		F42557CE0C45E9B6008065AE /* zkBaseClient.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = zkBaseClient.h; path = ../sforce/zkBaseClient.h; sourceTree = SOURCE_ROOT; };
+		F42557CF0C45E9B6008065AE /* zkBaseClient.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = zkBaseClient.m; path = ../sforce/zkBaseClient.m; sourceTree = SOURCE_ROOT; };
+		F42557D00C45E9B6008065AE /* ZKPartnerEnvelope.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ZKPartnerEnvelope.h; path = ../sforce/ZKPartnerEnvelope.h; sourceTree = SOURCE_ROOT; };
+		F42557D10C45E9B6008065AE /* ZKPartnerEnvelope.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = ZKPartnerEnvelope.m; path = ../sforce/ZKPartnerEnvelope.m; sourceTree = SOURCE_ROOT; };
 		F4416AA50BDAC4D3009A6E63 /* GDGradient.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GDGradient.h; path = ../common/GDGradient.h; sourceTree = SOURCE_ROOT; };
 		F4416AA60BDAC4D3009A6E63 /* GDGradient.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = GDGradient.m; path = ../common/GDGradient.m; sourceTree = SOURCE_ROOT; };
 		F4416AA70BDAC4D3009A6E63 /* GDOutlineView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GDOutlineView.h; path = ../common/GDOutlineView.h; sourceTree = SOURCE_ROOT; };
@@ -256,6 +262,10 @@
 		F4A1195B0B685FFB00B15DC2 /* sforce */ = {
 			isa = PBXGroup;
 			children = (
+				F42557CE0C45E9B6008065AE /* zkBaseClient.h */,
+				F42557CF0C45E9B6008065AE /* zkBaseClient.m */,
+				F42557D00C45E9B6008065AE /* ZKPartnerEnvelope.h */,
+				F42557D10C45E9B6008065AE /* ZKPartnerEnvelope.m */,
 				F4A119770B6862CE00B15DC2 /* zkChildRelationship.h */,
 				F4A119780B6862CE00B15DC2 /* zkChildRelationship.m */,
 				F4A119790B6862CE00B15DC2 /* zkDescribeField.h */,
@@ -370,6 +380,8 @@
 				F4416AF90BDADBB7009A6E63 /* AllCredentialsController.m in Sources */,
 				F4A0D5C10BE05A8B00E197F2 /* CredentialEditor.m in Sources */,
 				F46129610BE3E6C400886443 /* NewServerController.m in Sources */,
+				F42557D30C45E9B6008065AE /* zkBaseClient.m in Sources */,
+				F42557D50C45E9B6008065AE /* ZKPartnerEnvelope.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
