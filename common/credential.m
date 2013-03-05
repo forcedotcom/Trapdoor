@@ -1,4 +1,4 @@
-// Copyright (c) 2006 Simon Fell
+// Copyright (c) 2006-2008 Simon Fell
 //
 // Permission is hereby granted, free of charge, to any person obtaining a 
 // copy of this software and associated documentation files (the "Software"), 
@@ -21,7 +21,7 @@
 
 #import "credential.h"
 
-@implementation NSURL (Keychain)
+@implementation NSURL (ZKKeychain)
 - (SecProtocolType)SecProtocolType {
 	return [[[self scheme] lowercaseString] isEqualToString:@"http"] ? kSecProtocolTypeHTTP : kSecProtocolTypeHTTPS;
 }
@@ -48,8 +48,9 @@
 			SecKeychainAttributeList al = { 1, a };
 			OSStatus s2 = SecKeychainItemCopyContent(itemRef, NULL, &al, 0, NULL);
 			if (noErr == s2) {
-				NSString *un = [NSString stringWithCString:a[0].data length:a[0].length];
-				[results addObject:[Credential forServer:protocolAndServer username:un keychainItem:itemRef]];
+				NSString *un = [[[NSString alloc] initWithBytes:a[0].data length:a[0].length encoding:NSUTF8StringEncoding] autorelease];
+				if ([un rangeOfString:@"@"].location != NSNotFound)
+					[results addObject:[Credential forServer:protocolAndServer username:un keychainItem:itemRef]];
 				SecKeychainItemFreeContent(&al, NULL);
 			} else {
 				NSLog(@"SecKeychainItemCopyAttributesAndData error %d", s2);
@@ -133,9 +134,12 @@
 	SecKeychainAttributeList al = { 0, a };
 	UInt32 length = 0;
 	void *data = 0;
-	NSString *pwd;
-	if (noErr == SecKeychainItemCopyContent(keychainItem, NULL, &al, &length, &data)) {
+	NSString *pwd = nil;
+	OSStatus stat= SecKeychainItemCopyContent(keychainItem, NULL, &al, &length, &data);
+	if (noErr == stat) {
 		pwd = [NSString stringWithCString:data length:length];
+	} else {
+		NSLog(@"Unable to get password from keyChain, err %d %@", stat, [(NSString *)SecCopyErrorMessageString(stat, NULL) autorelease]);
 	}
 	SecKeychainItemFreeContent(&al, data);
 	return pwd;
@@ -228,7 +232,7 @@ BOOL checkAccessToAcl(SecACLRef acl, NSData *thisAppHash) {
 	return status;
 }
 
-- (OSStatus)setServer:(NSString *)protocolAndServer {
+- (void)setServer:(NSString *)protocolAndServer {
 	NSURL *url = [NSURL URLWithString:protocolAndServer];
 	NSString *host = [url host];
 	SecProtocolType protocol = [url SecProtocolType];
@@ -247,15 +251,15 @@ BOOL checkAccessToAcl(SecACLRef acl, NSData *thisAppHash) {
 		[server release];
 		server = [protocolAndServer copy];
 	}
-	return status;
+	NSAssert(noErr == status, @"Unable to set server name in keychain entry");
 }
 
-- (OSStatus)setUsername:(NSString *)newUsername {
-	return [self update:newUsername password:nil];
+- (void)setUsername:(NSString *)newUsername {
+	NSAssert(noErr == [self update:newUsername password:nil], @"Unable to set username attribute in keychain entry");
 }
 
-- (OSStatus)setPassword:(NSString *)newPassword {
-	return [self update:username password:newPassword];
+- (void)setPassword:(NSString *)newPassword {
+	NSAssert(noErr == [self update:username password:newPassword], @"Unable to set password attribute in keychain entry");
 }
 
 - (OSStatus)update:(NSString *)newUsername password:(NSString *)newPassword {
@@ -286,12 +290,12 @@ BOOL checkAccessToAcl(SecACLRef acl, NSData *thisAppHash) {
 	return [self stringAttribute:kSecCreatorItemAttr];
 }
 
-- (OSStatus)setComment:(NSString *)newComment {
-	return [self setKeychainAttribute:kSecCommentItemAttr newValue:newComment newPassword:nil];
+- (void)setComment:(NSString *)newComment {
+	NSAssert(noErr == [self setKeychainAttribute:kSecCommentItemAttr newValue:newComment newPassword:nil], @"Unable to set comment attribute in keychain entry");
 }
 
-- (OSStatus)setCreator:(NSString *)newCreator {
-	return [self setKeychainAttribute:kSecCreatorItemAttr newValue:newCreator newPassword:nil];
+- (void)setCreator:(NSString *)newCreator {
+	NSAssert(noErr == [self setKeychainAttribute:kSecCreatorItemAttr newValue:newCreator newPassword:nil], @"Unable to set creator attribute in keychain entry"); 
 }
 
 @end

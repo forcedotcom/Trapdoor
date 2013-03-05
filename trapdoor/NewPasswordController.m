@@ -2,6 +2,8 @@
 #import "zkSforceClient.h"
 #import "zkDescribeSObject.h"
 #import "zkSoapException.h"
+#import "zkUserInfo.h"
+#import "zkLoginResult.h"
 
 @implementation NewPasswordController
 
@@ -10,7 +12,7 @@
 	[self setKeys:[NSArray arrayWithObject:@"credential"] triggerChangeNotificationsForDependentKey:@"username"];
 }
 
-- (void)showNewPasswordWindow:(Credential *)c withError:(NSString *)err {
+-(void)showWindowForCredential:(Credential *)c withError:(NSString *)err {
 	[self setCredential:c];
 	[self setError:err];
 	[self setPassword:[c password]];
@@ -18,16 +20,32 @@
 	[window makeKeyAndOrderFront:self];
 }
 
-- (IBAction)login:(id)sender {
+- (void)showNewPasswordWindow:(Credential *)c withError:(NSString *)err {
+	[self setForLogin:YES];
+	[self showWindowForCredential:c withError:err];
+}
+
+- (void)showChangePasswordWindow:(Credential *)c withError:(NSString *)err client:(ZKSforceClient *)client {
+	[clientWithExpiredPassword autorelease];
+	clientWithExpiredPassword = [client retain];
+	[self setForLogin:NO];
+	[self showWindowForCredential:c withError:err];
+}
+
+- (IBAction)tryLogin:(id)sender {
 	ZKSforceClient *sforce = [mainController clientForServer:[credential server]];
 	@try {
-		[sforce login:[credential username] password:password];
-		[credential update:[credential username] password:password];
-		[mainController launchSalesforceForClient:sforce andCredential:credential];
-		[window orderOut:sender];
-		[self setCredential:nil];
-		[self setError:nil];
-		[self setPassword:nil];
+		ZKLoginResult *lr = [sforce login:[credential username] password:password];
+		if ([lr passwordExpired]) {
+			[self showChangePasswordWindow:credential withError:@"Your password has expired, please enter a new password" client:sforce];
+		} else {
+			[credential update:[credential username] password:password];
+			[mainController launchSalesforceForClient:sforce andCredential:credential];
+			[window orderOut:sender];
+			[self setCredential:nil];
+			[self setError:nil];
+			[self setPassword:nil];
+		}
 	}
 	@catch (ZKSoapException *ex) {
 		[self setError:[ex reason]];
@@ -35,11 +53,39 @@
 	}
 }
 
+- (IBAction)setPasswordAndLogin:(id)sender {
+	@try {
+		[clientWithExpiredPassword setPassword:password forUserId:[[clientWithExpiredPassword currentUserInfo] userId]];
+		[self tryLogin:sender];
+	}
+	@catch (ZKSoapException *ex) {
+		[self setError:[ex reason]];
+		NSBeep();
+	}
+}
+
+- (IBAction)login:(id)sender {
+	if ([self forLogin])
+		[self tryLogin:sender];
+	else
+		[self setPasswordAndLogin:sender];
+}
+
+
 - (void)dealloc {
 	[error release];
 	[credential release];
 	[password release];
+	[clientWithExpiredPassword release];
 	[super dealloc];
+}
+
+- (BOOL)forLogin {
+	return forLogin;
+}
+
+- (void)setForLogin:(BOOL)n {
+	forLogin = n;
 }
 
 - (NSString *)server {

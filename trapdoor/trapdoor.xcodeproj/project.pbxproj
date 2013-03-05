@@ -25,6 +25,8 @@
 		F4416AF90BDADBB7009A6E63 /* AllCredentialsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4416AF70BDADBB7009A6E63 /* AllCredentialsController.m */; };
 		F4445C0F0B856D7600DBA5B5 /* credential.m in Sources */ = {isa = PBXBuildFile; fileRef = F4445C0D0B856D7600DBA5B5 /* credential.m */; };
 		F46129610BE3E6C400886443 /* NewServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = F461295F0BE3E6C400886443 /* NewServerController.m */; };
+		F4A082FE113A1C10008F0BF9 /* zkLoginResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A082FD113A1C10008F0BF9 /* zkLoginResult.m */; };
+		F4A0831C113A1F1F008F0BF9 /* zkDescribeGlobalSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A0831B113A1F1F008F0BF9 /* zkDescribeGlobalSObject.m */; };
 		F4A0D5C10BE05A8B00E197F2 /* CredentialEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A0D5BF0BE05A8B00E197F2 /* CredentialEditor.m */; };
 		F4A119660B68602600B15DC2 /* zkEnvelope.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A1195D0B68602600B15DC2 /* zkEnvelope.m */; };
 		F4A119670B68602600B15DC2 /* zkSforceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A1195F0B68602600B15DC2 /* zkSforceClient.m */; };
@@ -40,6 +42,8 @@
 		F4A1198A0B6862CE00B15DC2 /* zkSaveResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A119820B6862CE00B15DC2 /* zkSaveResult.m */; };
 		F4A1198B0B6862CE00B15DC2 /* zkSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A119840B6862CE00B15DC2 /* zkSObject.m */; };
 		F4B3C0B80B8D54B3007E32C5 /* NewPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3C0B60B8D54B3007E32C5 /* NewPasswordController.m */; };
+		F4D77E56128502CB00704EE4 /* zkParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D77E55128502CB00704EE4 /* zkParser.m */; };
+		F4D77E5C1285030C00704EE4 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D77E5B1285030C00704EE4 /* libxml2.2.dylib */; };
 		F4F09D4A0B686E2C00C972C4 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4F09D490B686E2C00C972C4 /* Sparkle.framework */; };
 		F4F09D650B686E5100C972C4 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4F09D490B686E2C00C972C4 /* Sparkle.framework */; };
 		F4F09D6C0B6871F800C972C4 /* NewCredentialsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F09D6A0B6871F800C972C4 /* NewCredentialsController.m */; };
@@ -96,6 +100,10 @@
 		F4445C0D0B856D7600DBA5B5 /* credential.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = credential.m; path = ../common/credential.m; sourceTree = SOURCE_ROOT; };
 		F461295E0BE3E6C400886443 /* NewServerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewServerController.h; sourceTree = "<group>"; };
 		F461295F0BE3E6C400886443 /* NewServerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewServerController.m; sourceTree = "<group>"; };
+		F4A082FC113A1C10008F0BF9 /* zkLoginResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zkLoginResult.h; path = ../sforce/zkLoginResult.h; sourceTree = SOURCE_ROOT; };
+		F4A082FD113A1C10008F0BF9 /* zkLoginResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = zkLoginResult.m; path = ../sforce/zkLoginResult.m; sourceTree = SOURCE_ROOT; };
+		F4A0831A113A1F1F008F0BF9 /* zkDescribeGlobalSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zkDescribeGlobalSObject.h; path = ../sforce/zkDescribeGlobalSObject.h; sourceTree = SOURCE_ROOT; };
+		F4A0831B113A1F1F008F0BF9 /* zkDescribeGlobalSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = zkDescribeGlobalSObject.m; path = ../sforce/zkDescribeGlobalSObject.m; sourceTree = SOURCE_ROOT; };
 		F4A0D5BE0BE05A8B00E197F2 /* CredentialEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CredentialEditor.h; sourceTree = "<group>"; };
 		F4A0D5BF0BE05A8B00E197F2 /* CredentialEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialEditor.m; sourceTree = "<group>"; };
 		F4A1195C0B68602600B15DC2 /* zkEnvelope.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = zkEnvelope.h; path = ../sforce/zkEnvelope.h; sourceTree = SOURCE_ROOT; };
@@ -126,6 +134,9 @@
 		F4A119840B6862CE00B15DC2 /* zkSObject.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = zkSObject.m; path = ../sforce/zkSObject.m; sourceTree = SOURCE_ROOT; };
 		F4B3C0B50B8D54B3007E32C5 /* NewPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = NewPasswordController.h; sourceTree = "<group>"; };
 		F4B3C0B60B8D54B3007E32C5 /* NewPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NewPasswordController.m; sourceTree = "<group>"; };
+		F4D77E54128502CB00704EE4 /* zkParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zkParser.h; path = ../sforce/zkParser.h; sourceTree = SOURCE_ROOT; };
+		F4D77E55128502CB00704EE4 /* zkParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = zkParser.m; path = ../sforce/zkParser.m; sourceTree = SOURCE_ROOT; };
+		F4D77E5B1285030C00704EE4 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = /usr/lib/libxml2.2.dylib; sourceTree = "<absolute>"; };
 		F4F09D490B686E2C00C972C4 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		F4F09D690B6871F800C972C4 /* NewCredentialsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCredentialsController.h; sourceTree = "<group>"; };
 		F4F09D6A0B6871F800C972C4 /* NewCredentialsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCredentialsController.m; sourceTree = "<group>"; };
@@ -141,6 +152,7 @@
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				F41C2C520B667A4C00947837 /* Security.framework in Frameworks */,
 				F4F09D4A0B686E2C00C972C4 /* Sparkle.framework in Frameworks */,
+				F4D77E5C1285030C00704EE4 /* libxml2.2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +190,7 @@
 				F4F09D490B686E2C00C972C4 /* Sparkle.framework */,
 				F41C2C510B667A4C00947837 /* Security.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+				F4D77E5B1285030C00704EE4 /* libxml2.2.dylib */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -262,6 +275,8 @@
 		F4A1195B0B685FFB00B15DC2 /* sforce */ = {
 			isa = PBXGroup;
 			children = (
+				F4D77E54128502CB00704EE4 /* zkParser.h */,
+				F4D77E55128502CB00704EE4 /* zkParser.m */,
 				F42557CE0C45E9B6008065AE /* zkBaseClient.h */,
 				F42557CF0C45E9B6008065AE /* zkBaseClient.m */,
 				F42557D00C45E9B6008065AE /* ZKPartnerEnvelope.h */,
@@ -280,6 +295,8 @@
 				F4A119820B6862CE00B15DC2 /* zkSaveResult.m */,
 				F4A119830B6862CE00B15DC2 /* zkSObject.h */,
 				F4A119840B6862CE00B15DC2 /* zkSObject.m */,
+				F4A0831A113A1F1F008F0BF9 /* zkDescribeGlobalSObject.h */,
+				F4A0831B113A1F1F008F0BF9 /* zkDescribeGlobalSObject.m */,
 				F4A1196B0B6860C700B15DC2 /* zkDescribeSObject.h */,
 				F4A1196C0B6860C700B15DC2 /* zkDescribeSObject.m */,
 				F4A1195C0B68602600B15DC2 /* zkEnvelope.h */,
@@ -292,6 +309,8 @@
 				F4A119630B68602600B15DC2 /* zkUserInfo.m */,
 				F4A119640B68602600B15DC2 /* zkXmlDeserializer.h */,
 				F4A119650B68602600B15DC2 /* zkXmlDeserializer.m */,
+				F4A082FC113A1C10008F0BF9 /* zkLoginResult.h */,
+				F4A082FD113A1C10008F0BF9 /* zkLoginResult.m */,
 			);
 			name = sforce;
 			sourceTree = "<group>";
@@ -324,9 +343,11 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "trapdoor" */;
+			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* trapdoor */;
 			projectDirPath = "";
+			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* Trapdoor */,
 			);
@@ -382,6 +403,9 @@
 				F46129610BE3E6C400886443 /* NewServerController.m in Sources */,
 				F42557D30C45E9B6008065AE /* zkBaseClient.m in Sources */,
 				F42557D50C45E9B6008065AE /* ZKPartnerEnvelope.m in Sources */,
+				F4A082FE113A1C10008F0BF9 /* zkLoginResult.m in Sources */,
+				F4A0831C113A1F1F008F0BF9 /* zkDescribeGlobalSObject.m in Sources */,
+				F4D77E56128502CB00704EE4 /* zkParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,8 +477,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = trapdoor_Prefix.pch;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				PREBINDING = NO;
 				PRODUCT_NAME = "";
 				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
@@ -465,8 +492,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = trapdoor_Prefix.pch;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				PREBINDING = NO;
 				PRODUCT_NAME = Trapdoor;
 				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;

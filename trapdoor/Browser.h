@@ -11,15 +11,19 @@
 @interface Browser : NSObject {
 	NSString *label;
 	NSString *bundleIdentifier;
+	NSImage *icon;
 }
 
 + (NSArray *)browsers;
 + (Browser *)forBundleIdentifier:(NSString *)bid;
++ (void)buildPopUpButtonForBrowsers:(NSPopUpButton *)button;
 
 - (NSString *)label;
 - (void)setLabel:(NSString *)aLabel;
 - (NSString *)bundleIdentifier;
 - (void)setBundleIdentifier:(NSString *)aBundleIdentifier;
 - (NSString *)bundleIdentifierNoNil;
+
+- (NSImage *)icon;
 
 @end

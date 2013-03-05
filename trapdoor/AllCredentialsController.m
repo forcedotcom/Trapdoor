@@ -74,6 +74,18 @@
 	[super dealloc];
 }
 
+-(void)awakeFromNib {
+	[Browser buildPopUpButtonForBrowsers:browserList];
+	for (NSMenuItem *i in [[browserList menu] itemArray]) {
+		[i setTarget:self];
+		[i setAction:@selector(changedBrowser:)];
+	}
+}
+
+-(void)changedBrowser:(id)sender {
+	[current setBrowser:[[browserList selectedItem] representedObject]];
+}
+
 - (void)loadCredentials {
 	NSArray * servers = [[NSUserDefaults standardUserDefaults] objectForKey:@"servers"];
 	NSMutableArray *items = [NSMutableArray arrayWithCapacity:[servers count]];
@@ -130,6 +142,7 @@
 	Credential *c = [credList itemAtRow:[credList selectedRow]];
 	CredentialEditor *ce = [[[CredentialEditor alloc] initForCredential:c] autorelease];
 	[self setCurrentCredential:ce];
+	[browserList selectItemWithTitle:[[c browser] label]];
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item {

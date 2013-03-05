@@ -1,4 +1,4 @@
-// Copyright (c) 2006 Simon Fell
+// Copyright (c) 2009 Simon Fell
 //
 // Permission is hereby granted, free of charge, to any person obtaining a 
 // copy of this software and associated documentation files (the "Software"), 
@@ -19,15 +19,27 @@
 // THE SOFTWARE.
 //
 
-
 #import "zkXmlDeserializer.h"
 
-@interface ZKSaveResult : ZKXmlDeserializer {
+@class ZKUserInfo;
+
+// <element name="metadataServerUrl" type="xsd:string" nillable="true"/>
+// <element name="passwordExpired"   type="xsd:boolean" />
+// <element name="sandbox"			 type="xsd:boolean"/>
+// <element name="serverUrl"         type="xsd:string" nillable="true"/>
+// <element name="sessionId"         type="xsd:string" nillable="true"/>
+// <element name="userId"            type="tns:ID" nillable="true"/>
+// <element name="userInfo"          type="tns:GetUserInfoResult" minOccurs="0"/>
+
+
+@interface ZKLoginResult : ZKXmlDeserializer {
 }
 
-- (NSString *)id;
-- (BOOL)success;
-- (NSString *)statusCode;
-- (NSString *)message;
-
+-(NSString *)metadataServerUrl;
+-(NSString *)serverUrl;
+-(NSString *)sessionId;
+-(NSString *)userId;
+-(ZKUserInfo *)userInfo;
+-(BOOL)passwordExpired;
+-(BOOL)sandbox;
 @end

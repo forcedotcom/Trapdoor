@@ -17,7 +17,8 @@
 	IBOutlet	NSWindow 			*window;
 	IBOutlet 	GDOutlineView		*credList;
 	IBOutlet	NewServerController	*newServerController;
-
+	IBOutlet	NSPopUpButton		*browserList;
+	
 	NSMutableArray		*rootList;
 	CredentialEditor 	*current;
 }

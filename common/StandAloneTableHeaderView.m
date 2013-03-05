@@ -1,49 +1,44 @@
 #import "StandAloneTableHeaderView.h"
-#import "iTableColumnHeaderCell.h"
+
 
 @implementation StandAloneTableHeaderView
 
-// NSObject
 -(id)initWithFrame:(NSRect)rect {
 	[super initWithFrame:rect];
 	textAttributes =  [[NSMutableDictionary dictionaryWithObjectsAndKeys:
 						[NSFont titleBarFontOfSize:11.0], NSFontAttributeName,
 						[NSColor blackColor], NSForegroundColorAttributeName,
 						nil] retain];
+						
+	gradient = [[NSGradient alloc] initWithColors:[NSArray arrayWithObjects:[NSColor whiteColor], [NSColor colorWithCalibratedRed:0.875 green:0.875 blue:0.875 alpha:1.0], [NSColor whiteColor], nil]];
 	return self;
 }
 
 -(void)dealloc {
 	[headerText release];
 	[textAttributes release];
+	[gradient release];
 	[super dealloc];
 }
 
-// NSView
-- (void)drawRect:(NSRect)rect {
-	[super drawRect:rect];
-	NSRect txtRect = NSOffsetRect(rect, 5,1);
+-(void)drawRect:(NSRect)rect {
+	NSRect b = [self bounds];
+	[[NSColor colorWithCalibratedRed:0.698 green:0.698 blue:0.698 alpha:1.0] set];
+	NSRectFill(b);
+	[gradient drawInRect:NSInsetRect(b,1,1) angle:90];
+	NSRect txtRect = NSInsetRect(b, 5,1);
 	[headerText drawInRect:txtRect withAttributes:textAttributes];
 }
 
-// StandAloneTableHeaderView
 -(void)setHeaderText:(NSString *)newValue {
 	if (newValue != headerText) {
 		[headerText release];
-		headerText = [newValue retain];
+		headerText = [newValue copy];
 	}
 }
 
 -(NSString *)headerText {
-	return headerText;
-}
-
-- (BOOL)metalLook {
-	return metalLook;
-}
-
-- (void)setMetalLook:(BOOL)newMetalLook {
-	metalLook = newMetalLook;
+	return [[headerText retain] autorelease];
 }
 
 @end

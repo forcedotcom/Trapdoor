@@ -19,9 +19,9 @@
 // THE SOFTWARE.
 //
 
-#import <Cocoa/Cocoa.h>
 #import "zkXmlDeserializer.h"
 #import "zkDescribeField.h"
+#import "zkDescribeGlobalSObject.h"
 
 /*
 <element name="activateable"   		type="xsd:boolean"/>
@@ -41,6 +41,7 @@
 <element name="replicateable"  		type="xsd:boolean"/>
 <element name="retrieveable"   		type="xsd:boolean"/>
 <element name="searchable"     		type="xsd:boolean"/>
+<element name="triggerable"         type="xsd:boolean" minOccurs="0"/>
 <element name="undeletable"    		type="xsd:boolean"/>
 <element name="updateable"     		type="xsd:boolean"/>
 <element name="urlDetail"      		type="xsd:string" nillable="true"/>
@@ -48,29 +49,13 @@
 <element name="urlNew"         		type="xsd:string" nillable="true"/>
  */
  
-@interface ZKDescribeSObject : ZKXmlDeserializer {
+@interface ZKDescribeSObject : ZKDescribeGlobalSObject {
 	NSArray			*fields;
 	NSDictionary	*fieldsByName;
 	NSArray			*childRelationships;
 	NSArray 		*recordTypeInfos;
 }
 
--(BOOL)activateable;
--(BOOL)createable;
--(BOOL)custom;
--(BOOL)deletable;
--(BOOL)layoutable;
--(BOOL)mergeable;
--(BOOL)queryable;
--(BOOL)replicateable;
--(BOOL)retrieveable;
--(BOOL)searchable;
--(BOOL)undeleteable;
--(BOOL)updateable;
--(NSString *)keyPrefix;
--(NSString *)label;
--(NSString *)labelPlural;
--(NSString *)name;
 -(NSString *)urlDetail;
 -(NSString *)urlEdit;
 -(NSString *)urlNew;

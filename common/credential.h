@@ -1,4 +1,4 @@
-// Copyright (c) 2006 Simon Fell
+// Copyright (c) 2006-2008 Simon Fell
 //
 // Permission is hereby granted, free of charge, to any person obtaining a 
 // copy of this software and associated documentation files (the "Software"), 
@@ -44,16 +44,16 @@
 - (NSString *)creator;
 - (BOOL)canReadPasswordWithoutPrompt;
 
-- (OSStatus)setServer:(NSString *)newServer;
-- (OSStatus)setUsername:(NSString *)newUsername;
-- (OSStatus)setPassword:(NSString *)newPassword;
-- (OSStatus)setComment:(NSString *)newComment;
-- (OSStatus)setCreator:(NSString *)newCreator;
+- (void)setServer:(NSString *)newServer;
+- (void)setUsername:(NSString *)newUsername;
+- (void)setPassword:(NSString *)newPassword;
+- (void)setComment:(NSString *)newComment;
+- (void)setCreator:(NSString *)newCreator;
 
 - (void)removeFromKeychain;
 - (OSStatus)update:(NSString *)username password:(NSString *)password;
 @end
 
-@interface NSURL (Keychain)
+@interface NSURL (ZKKeychain)
 - (SecProtocolType)SecProtocolType;
 @end

@@ -1,3 +1,24 @@
+// Copyright (c) 2006-2008 Simon Fell
+//
+// Permission is hereby granted, free of charge, to any person obtaining a 
+// copy of this software and associated documentation files (the "Software"), 
+// to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+// and/or sell copies of the Software, and to permit persons to whom the 
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included 
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN 
+// THE SOFTWARE.
+//
+
 #import "ZKLoginController.h"
 #import "credential.h"
 #import "zkSforceClient.h"
@@ -17,6 +38,7 @@ static NSString * login_lastUsernameKey = @"login_lastUserName";
 	self = [super init];
 	server = [[[NSUserDefaults standardUserDefaults] objectForKey:@"server"] copy];
 	[self setUsername:[[NSUserDefaults standardUserDefaults] objectForKey:login_lastUsernameKey]];
+	preferedApiVersion = 24;
 	return self;
 }
 
@@ -27,8 +49,6 @@ static NSString * login_lastUsernameKey = @"login_lastUserName";
 }
 
 - (void)awakeFromNib {
-	[self setImage:@"plus-8" onButton:addButton];
-	[self setImage:@"minus-8" onButton:delButton];
 	[loginProgress setUsesThreadedAnimation:YES];
 	[loginProgress setHidden:YES];
 	[loginProgress setDoubleValue:22.0];
@@ -50,6 +70,14 @@ static NSString * login_lastUsernameKey = @"login_lastUserName";
 	[NSBundle loadNibNamed:@"Login" owner:self];	
 }
 
+-(int)preferedApiVersion {
+	return preferedApiVersion;
+}
+
+-(void)setPreferedApiVersion:(int)v {
+	preferedApiVersion = v;
+}
+
 - (void)setClientIdFromInfoPlist {
 	NSDictionary *plist = [[NSBundle mainBundle] infoDictionary];
 	NSString *cid = [NSString stringWithFormat:@"%@/%@", [plist objectForKey:@"CFBundleName"], [plist objectForKey:@"CFBundleVersion"]];
@@ -61,10 +89,18 @@ static NSString * login_lastUsernameKey = @"login_lastUserName";
 }
 
 - (ZKSforceClient *)showModalLoginWindow:(id)sender {
+	return [self showModalLoginWindow:sender submitIfHaveCredentials:NO];
+}
+
+- (ZKSforceClient *)showModalLoginWindow:(id)sender submitIfHaveCredentials:(BOOL)autoSubmit {
 	[self loadNib];
 	target = self;
 	selector = @selector(endModalWindow:);
 	modalWindow = nil;
+	if (autoSubmit && [password length] > 0 && [username length] > 0) {
+		[self login:sender];
+		if ([statusText length] == 0) return sforce;
+	}
 	[NSApp runModalForWindow:window];
 	[window close];
 	return [sforce loggedIn] ? sforce : nil;
@@ -181,7 +217,7 @@ static NSString *test = @"https://test.salesforce.com";
 }
 
 - (void)updateKeychain:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo {
-	NSLog(@"updateKeychain rc=%d", returnCode);
+//	NSLog(@"updateKeychain rc=%d", returnCode);
 	if (returnCode == NSAlertDefaultReturn)
 		[[self selectedCredential] update:username password:password];
 	[[alert window] orderOut:self];
@@ -190,7 +226,7 @@ static NSString *test = @"https://test.salesforce.com";
 }
 
 - (void)createKeychain:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo {
-	NSLog(@"createKeychain rc=%d", returnCode);
+//	NSLog(@"createKeychain rc=%d", returnCode);
 	if (returnCode == NSAlertDefaultReturn) 
 		[Credential createCredentialForServer:server username:username password:password];
 	[[alert window] orderOut:self];
@@ -218,19 +254,43 @@ static NSString *test = @"https://test.salesforce.com";
 				contextInfo:nil];
 }
 
-- (IBAction)login:(id)sender {
-	[self setStatusText:nil];
-	[loginProgress setHidden:NO];
-	[loginProgress display];
+- (ZKSforceClient *)performLogin:(ZKSoapException **)error withApiVersion:(int)version {
 	[sforce release];
 	sforce = [[ZKSforceClient alloc] init];
-	[sforce setLoginProtocolAndHost:server];	
+	[sforce setLoginProtocolAndHost:server andVersion:version];	
 	if ([clientId length] > 0)
 		[sforce setClientId:clientId];
 	@try {
 		[sforce login:username password:password];
 		[[NSUserDefaults standardUserDefaults] setObject:server forKey:@"server"];
 		[[NSUserDefaults standardUserDefaults] setObject:username forKey:login_lastUsernameKey];
+	}
+	@catch (ZKSoapException *ex) {
+		if ([[ex reason] hasPrefix:@"UNSUPPORTED_API_VERSION:"]) {
+			NSLog(@"Login failed with %@ on API Version %d, retrying with version %d", [ex reason], version, version-1);
+			return [self performLogin:error withApiVersion:version-1];
+		}
+		if (error != nil) *error = ex;
+		return nil;
+	}
+	return sforce;
+}
+
+- (ZKSforceClient *)performLogin:(ZKSoapException **)error {
+	return [self performLogin:error withApiVersion:preferedApiVersion];
+}
+
+- (IBAction)login:(id)sender {
+	[self setStatusText:nil];
+	[loginProgress setHidden:NO];
+	[loginProgress display];
+	@try {
+		ZKSoapException *ex = nil;
+		[self performLogin:&ex];
+		if (ex != nil) {
+			[self setStatusText:[ex reason]];
+			return;
+		} 
 		if (selectedCredential == nil || (![[[selectedCredential username] lowercaseString] isEqualToString:[username lowercaseString]])) {
 			[self promptAndAddToKeychain];
 			return;
@@ -241,9 +301,6 @@ static NSString *test = @"https://test.salesforce.com";
 		}
 		[self cancelLogin:sender];
 		[target performSelector:selector withObject:sforce];
-	}
-	@catch (ZKSoapException *ex) {
-		[self setStatusText:[ex reason]];
 	}
 	@finally {		
 		[loginProgress setHidden:YES];

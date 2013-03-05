@@ -16,28 +16,23 @@
 	IBOutlet NSWindow 				*window;
 	IBOutlet AppController 			*mainController;
 	IBOutlet NewServerController 	*newServerController;
+	IBOutlet NSPopUpButton			*browsers;
 	
 	NSString *newUsername;
 	NSString *newPassword;
 	NSString *newServer;
 	NSString *newAlias;
-	Browser  *newBrowser;
 }
 
 - (IBAction)addCredential:(id)sender;
 - (IBAction)addAndLogin:(id)sender;
 - (IBAction)addServer:(id)sender;
 
-- (NSString *)newUsername;
-- (void)setNewUsername:(NSString *)s;
-- (NSString *)newPassword;
-- (void)setNewPassword:(NSString *)s;
-- (NSString *)newServer;
-- (void)setNewServer:(NSString *)s;
-- (NSString *)newAlias;
-- (void)setNewAlias:(NSString *)aNewAlias;
-- (Browser *)newBrowser;
-- (void)setNewBrowser:(Browser *)aNewBrowser;
+@property (retain) NSString *newUsername;
+@property (retain) NSString *newPassword;
+@property (retain) NSString *newServer;
+@property (retain) NSString *newAlias;
+
 - (NSArray *)browsers;
 
 @end

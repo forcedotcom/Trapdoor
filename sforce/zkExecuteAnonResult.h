@@ -9,13 +9,15 @@
 #import <Cocoa/Cocoa.h>
 #import "zkXmlDeserializer.h"
 
-// <xsd:element name="column" type="xsd:int"/>
-// <xsd:element name="compileProblem" type="xsd:string"/>
-// <xsd:element name="compiled" type="xsd:boolean"/>
-// <xsd:element name="exceptionMessage" type="xsd:string"/>
-// <xsd:element name="exceptionStackTrace" type="xsd:string"/>
-// <xsd:element name="line" type="xsd:int"/>
-// <xsd:element name="success" type="xsd:boolean"/>
+/*
+     <xsd:element name="column" type="xsd:int"/> 
+     <xsd:element name="compileProblem" type="xsd:string" nillable="true"/> 
+     <xsd:element name="compiled" type="xsd:boolean"/> 
+     <xsd:element name="exceptionMessage" type="xsd:string" nillable="true"/> 
+     <xsd:element name="exceptionStackTrace" type="xsd:string" nillable="true"/> 
+     <xsd:element name="line" type="xsd:int"/> 
+     <xsd:element name="success" type="xsd:boolean"/> 
+*/
 
 @interface ZKExecuteAnonymousResult : ZKXmlDeserializer {
 }

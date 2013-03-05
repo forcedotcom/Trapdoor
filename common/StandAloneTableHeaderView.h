@@ -2,15 +2,13 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface StandAloneTableHeaderView : NSTableHeaderView {
+@interface StandAloneTableHeaderView : NSView {
 	NSString 		*headerText;
 	NSDictionary 	*textAttributes;
-	BOOL			metalLook;
+	NSGradient		*gradient;
 }
 
--(void)setHeaderText:(NSString *)newValue;
--(NSString *)headerText;
-- (BOOL)metalLook;
-- (void)setMetalLook:(BOOL)newMetalLook;
+- (void)setHeaderText:(NSString *)newValue;
+- (NSString *)headerText;
 
 @end

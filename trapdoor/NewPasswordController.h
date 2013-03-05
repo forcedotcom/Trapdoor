@@ -4,6 +4,8 @@
 #import "credential.h"
 #import "AppController.h"
 
+@class ZKSforceClient;
+
 @interface NewPasswordController : NSObject {
     IBOutlet NSWindow *window;
 	IBOutlet AppController *mainController;
@@ -11,9 +13,14 @@
 	Credential	*credential;
 	NSString 	*error;
 	NSString 	*password;
+	BOOL		forLogin;
+	
+	ZKSforceClient	*clientWithExpiredPassword;
 }
 
 - (void)showNewPasswordWindow:(Credential *)c withError:(NSString *)err;
+- (void)showChangePasswordWindow:(Credential *)c withError:(NSString *)err client:(ZKSforceClient *)client;
+
 - (IBAction)login:(id)sender;
 
 - (NSString *)error;
@@ -24,5 +31,8 @@
 - (NSString *)username;
 - (NSString *)password;
 - (void)setPassword:(NSString *)aPassword;
+
+- (BOOL)forLogin;
+- (void)setForLogin:(BOOL)n;
 
 @end

@@ -28,6 +28,9 @@
 #import "zkSoapException.h"
 #import "zkUserInfo.h"
 #import "zkDescribeSObject.h"
+#import "zkLoginResult.h"
+#import "zkDescribeGlobalSObject.h"
+#import "zkParser.h"
 
 static const int MAX_SESSION_AGE = 25 * 60; // 25 minutes
 static const int SAVE_BATCH_SIZE = 25;
@@ -36,13 +39,14 @@ static const int SAVE_BATCH_SIZE = 25;
 - (ZKQueryResult *)queryImpl:(NSString *)value operation:(NSString *)op name:(NSString *)elemName;
 - (NSArray *)sobjectsImpl:(NSArray *)objects name:(NSString *)elemName;
 - (void)checkSession;
-- (void)startNewSession;
+- (ZKLoginResult *)startNewSession;
 @end
 
 @implementation ZKSforceClient
 
 - (id)init {
 	self = [super init];
+	preferedApiVersion = 23;
 	[self setLoginProtocolAndHost:@"https://www.salesforce.com"];
 	updateMru = NO;
 	cacheDescribes = NO;
@@ -63,6 +67,7 @@ static const int SAVE_BATCH_SIZE = 25;
 
 - (id)copyWithZone:(NSZone *)zone {
 	ZKSforceClient *rhs = [[ZKSforceClient alloc] init];
+	[rhs->authEndpointUrl release];
 	rhs->authEndpointUrl = [authEndpointUrl copy];
 	rhs->endpointUrl = [endpointUrl copy];
 	rhs->sessionId = [sessionId copy];
@@ -71,9 +76,14 @@ static const int SAVE_BATCH_SIZE = 25;
 	rhs->clientId = [clientId copy];
 	rhs->sessionExpiresAt = [sessionExpiresAt copy];
 	rhs->userInfo = [userInfo retain];
+	rhs->preferedApiVersion = preferedApiVersion;
 	[rhs setCacheDescribes:cacheDescribes];
 	[rhs setUpdateMru:updateMru];
 	return rhs;
+}
+
+-(void)setPreferedApiVersion:(int)v {
+	preferedApiVersion = v;
 }
 
 - (BOOL)updateMru {
@@ -102,7 +112,7 @@ static const int SAVE_BATCH_SIZE = 25;
 }
 
 - (void)setLoginProtocolAndHost:(NSString *)protocolAndHost {
-	[self setLoginProtocolAndHost:protocolAndHost andVersion:8];
+	[self setLoginProtocolAndHost:protocolAndHost andVersion:preferedApiVersion];
 }
 
 - (void)setLoginProtocolAndHost:(NSString *)protocolAndHost andVersion:(int)version {
@@ -110,17 +120,21 @@ static const int SAVE_BATCH_SIZE = 25;
 	authEndpointUrl = [[NSString stringWithFormat:@"%@/services/Soap/u/%d.0", protocolAndHost, version] retain];
 }
 
-- (void)login:(NSString *)un password:(NSString *)pwd {
+- (NSURL *)authEndpointUrl {
+	return [NSURL URLWithString:authEndpointUrl];
+}
+
+- (ZKLoginResult *)login:(NSString *)un password:(NSString *)pwd {
 	[userInfo release];
 	userInfo = nil;
 	[password release];
 	[username release];
 	username = [un retain];
 	password = [pwd retain];
-	[self startNewSession];
+	return [self startNewSession];
 }
 
-- (void)startNewSession {
+- (ZKLoginResult *)startNewSession {
 	[sessionExpiresAt release];
 	sessionExpiresAt = [[NSDate dateWithTimeIntervalSinceNow:MAX_SESSION_AGE] retain];
 	[sessionId release];
@@ -135,19 +149,17 @@ static const int SAVE_BATCH_SIZE = 25;
 	[env endElement:@"s:Body"];
 	NSString *xml = [env end];
 	
-	NSError *err = nil;
-	NSXMLNode *resp = [self sendRequest:xml];	
-
-	NSXMLNode *serverUrl = [[resp nodesForXPath:@"result/serverUrl" error:&err] objectAtIndex:0];
+	zkElement *resp = [self sendRequest:xml];	
+	zkElement *result = [[resp childElements:@"result"] objectAtIndex:0];
+	ZKLoginResult *lr = [[ZKLoginResult alloc] initWithXmlElement:result];
+	
 	[endpointUrl release];
-	endpointUrl = [[serverUrl stringValue] copy];
+	endpointUrl = [[lr serverUrl] copy];
+	sessionId = [[lr sessionId] copy];
 
-	NSXMLNode *sid = [[resp nodesForXPath:@"result/sessionId" error:&err] objectAtIndex:0];
-	sessionId = [[sid stringValue] copy];
-
-	NSXMLNode *ui = [[resp nodesForXPath:@"result/userInfo" error:&err] objectAtIndex:0];
-	userInfo = [[ZKUserInfo alloc] initWithXmlElement:(NSXMLElement*)ui];
+	userInfo = [[lr userInfo] retain];
 	[env release];
+	return lr;
 }
 
 - (BOOL)loggedIn {
@@ -183,24 +195,45 @@ static const int SAVE_BATCH_SIZE = 25;
 	clientId = aClientId;
 }
 
+- (void)setPassword:(NSString *)newPassword forUserId:(NSString *)userId {
+	if(!sessionId) return;
+	[self checkSession];
+	
+	ZKEnvelope * env = [[ZKPartnerEnvelope alloc] initWithSessionHeader:sessionId clientId:clientId];
+	[env startElement:@"setPassword"];
+	[env addElement:@"userId" elemValue:userId];
+	[env addElement:@"password" elemValue:newPassword];
+	[env endElement:@"setPassword"];
+	[env endElement:@"s:Body"];
+	
+	[self sendRequest:[env end]];
+}
+
 - (NSArray *)describeGlobal {
 	if(!sessionId) return NULL;
 	[self checkSession];
+	if (cacheDescribes) {
+		NSArray *dg = [describes objectForKey:@"describe__global"];	// won't be an sfdc object ever called this.
+		if (dg != nil) return dg;
+	}
 	
 	ZKEnvelope * env = [[ZKPartnerEnvelope alloc] initWithSessionHeader:sessionId clientId:clientId];
 	[env startElement:@"describeGlobal"];
 	[env endElement:@"describeGlobal"];
 	[env endElement:@"s:Body"];
 	
-	NSError * err = NULL;
-	NSXMLNode * rr = [self sendRequest:[env end]];
+	zkElement * rr = [self sendRequest:[env end]];
 	NSMutableArray *types = [NSMutableArray array]; 
-	NSArray * results = [rr nodesForXPath:@"result/types" error:&err];
+	NSArray *results = [[rr childElement:@"result"] childElements:@"sobjects"];
 	NSEnumerator * e = [results objectEnumerator];
 	while (rr = [e nextObject]) {
-		[types addObject:[rr stringValue]];
+		ZKDescribeGlobalSObject * d = [[ZKDescribeGlobalSObject alloc] initWithXmlElement:rr];
+		[types addObject:d];
+		[d release];
 	}
 	[env release];
+	if (cacheDescribes)
+		[describes setObject:types forKey:@"describe__global"];
 	return types;
 }
 
@@ -218,10 +251,9 @@ static const int SAVE_BATCH_SIZE = 25;
 	[env endElement:@"describeSObject"];
 	[env endElement:@"s:Body"];
 	
-	NSError *err = 0;
-	NSXMLNode *dr = [self sendRequest:[env end]];
-	NSXMLNode *descResult = [[dr nodesForXPath:@"result" error:&err] objectAtIndex:0];
-	ZKDescribeSObject *desc = [[[ZKDescribeSObject alloc] initWithXmlElement:(NSXMLElement*)descResult] autorelease];
+	zkElement *dr = [self sendRequest:[env end]];
+	zkElement *descResult = [dr childElement:@"result"];
+	ZKDescribeSObject *desc = [[[ZKDescribeSObject alloc] initWithXmlElement:descResult] autorelease];
 	[env release];
 	if (cacheDescribes) 
 		[describes setObject:desc forKey:[sobjectName lowercaseString]];
@@ -237,14 +269,11 @@ static const int SAVE_BATCH_SIZE = 25;
 	[env endElement:@"search"];
 	[env endElement:@"s:Body"];
 	
-	NSError *err = 0;
-	NSXMLNode *sr = [self sendRequest:[env end]];
-	NSXMLNode *searchResult = [[sr nodesForXPath:@"result" error:&err] objectAtIndex:0];
-	NSArray *records = [searchResult nodesForXPath:@"searchRecords/record" error:&err];
+	zkElement *sr = [self sendRequest:[env end]];
+	zkElement *searchResult = [sr childElement:@"result"];
+	NSArray *records = [[searchResult childElement:@"searchRecords"] childElements:@"record"];
 	NSMutableArray *sobjects = [NSMutableArray array];
-	NSEnumerator *e = [records objectEnumerator];
-	NSXMLNode *soNode;
-	while (soNode = [e nextObject]) 
+	for (zkElement *soNode in records)
 		[sobjects addObject:[ZKSObject fromXmlNode:soNode]];
 	[env release];
 	return sobjects;	
@@ -258,9 +287,8 @@ static const int SAVE_BATCH_SIZE = 25;
 	[env endElement:@"getServerTimestamp"];
 	[env endElement:@"s:Body"];
 	
-	NSError *err = 0;
-	NSXMLNode *res = [self sendRequest:[env end]];
-	NSXMLNode *timestamp = [[res nodesForXPath:@"result" error:&err] objectAtIndex:0];
+	zkElement *res = [self sendRequest:[env end]];
+	zkElement *timestamp = [res childElement:@"result"];
 	[env release];
 	return [timestamp stringValue];
 }
@@ -309,13 +337,11 @@ static const int SAVE_BATCH_SIZE = 25;
 	[env endElement:elemName];
 	[env endElement:@"s:Body"];
 
-	NSError *err = NULL;
-	NSXMLNode *cr = [self sendRequest:[env end]];
-	NSArray *resultsArr = [cr nodesForXPath:@"result" error:&err];
+	zkElement *cr = [self sendRequest:[env end]];
+	NSArray *resultsArr = [cr childElements:@"result"];
 	NSMutableArray *results = [NSMutableArray arrayWithCapacity:[resultsArr count]];
-	e = [resultsArr objectEnumerator];
-	while (cr = [e nextObject]) {
-		ZKSaveResult * sr = [[ZKSaveResult alloc] initWithXmlElement:(NSXMLElement*)cr];
+	for (zkElement *cr in resultsArr) {
+		ZKSaveResult * sr = [[ZKSaveResult alloc] initWithXmlElement:cr];
 		[results addObject:sr];
 		[sr release];
 	}
@@ -335,13 +361,11 @@ static const int SAVE_BATCH_SIZE = 25;
 	[env endElement:@"retrieve"];
 	[env endElement:@"s:Body"];
 	
-	NSError *err = NULL;
-	NSXMLNode *rr = [self sendRequest:[env end]];
+	zkElement *rr = [self sendRequest:[env end]];
 	NSMutableDictionary *sobjects = [NSMutableDictionary dictionary]; 
-	NSArray *results = [rr nodesForXPath:@"result" error:&err];
-	NSEnumerator *e = [results objectEnumerator];
-	while (rr = [e nextObject]) {
-		ZKSObject *o = [[ZKSObject alloc] initFromXmlNode:rr];
+	NSArray *results = [rr childElements:@"result"];
+	for (zkElement *res in results) {
+		ZKSObject *o = [[ZKSObject alloc] initFromXmlNode:res];
 		[sobjects setObject:o forKey:[o id]];
 		[o release];
 	}
@@ -359,13 +383,11 @@ static const int SAVE_BATCH_SIZE = 25;
 	[env endElement:@"delete"];
 	[env endElement:@"s:Body"];
 	
-	NSError *err = NULL;
-	NSXMLNode *cr = [self sendRequest:[env end]];
-	NSArray *resArr = [cr nodesForXPath:@"result" error:&err];
+	zkElement *cr = [self sendRequest:[env end]];
+	NSArray *resArr = [cr childElements:@"result"];
 	NSMutableArray *results = [NSMutableArray arrayWithCapacity:[resArr count]];
-	NSEnumerator *e = [resArr objectEnumerator];
-	while (cr = [e nextObject]) {
-		ZKSaveResult *sr = [[ZKSaveResult alloc] initWithXmlElement:(NSXMLElement*)cr];
+	for (zkElement *cr in resArr) {
+		ZKSaveResult *sr = [[ZKSaveResult alloc] initWithXmlElement:cr];
 		[results addObject:sr];
 		[sr release];
 	}
@@ -383,8 +405,8 @@ static const int SAVE_BATCH_SIZE = 25;
 	[env endElement:operation];
 	[env endElement:@"s:Body"];
 	
-	NSXMLNode *qr = [self sendRequest:[env end]];
-	ZKQueryResult *result = [[ZKQueryResult alloc] initFromXmlNode:[[qr children] objectAtIndex:0]];
+	zkElement *qr = [self sendRequest:[env end]];
+	ZKQueryResult *result = [[ZKQueryResult alloc] initFromXmlNode:[[qr childElements] objectAtIndex:0]];
 	[env release];
 	return [result autorelease];
 }

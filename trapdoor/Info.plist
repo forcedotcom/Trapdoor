@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
@@ -19,7 +19,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.4</string>
+	<string>1.8</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
@@ -28,17 +28,6 @@
 	<false/>
 	<key>SUFeedURL</key>
 	<string>http://www.pocketsoap.com/osx/trapdoor/trapdoor.xml</string>
-	<key>ZKBrowsers</key>
-	<dict>
-		<key>Camino</key>
-		<string>org.mozilla.camino</string>
-		<key>Firefox</key>
-		<string>org.mozilla.firefox</string>
-		<key>OmniWeb</key>
-		<string>com.omnigroup.OmniWeb5</string>
-		<key>Safari</key>
-		<string>com.apple.safari</string>
-	</dict>
 	<key>ZKHelpUrl</key>
 	<string>http://www.pocketsoap.com/osx/trapdoor/help/</string>
 </dict>
